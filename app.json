@@ -1,6 +1,6 @@
 {
-  "name": "Start on Heroku: Java",
-  "description": "A barebones Java app, which can easily be deployed to Heroku.",
+  "name": "TheBookMaze",
+  "description": "Web-app for downloading and reserving books (student lab)",
   "image": "heroku/java",
   "addons": [ "heroku-postgresql" ]
 }
