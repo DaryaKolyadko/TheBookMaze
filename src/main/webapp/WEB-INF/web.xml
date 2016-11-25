@@ -13,7 +13,7 @@
 
     <servlet>
         <servlet-name>MainServlet</servlet-name>
-        <servlet-class>Main</servlet-class>
+        <servlet-class>com.kolyadko_polovtseva.book_maze.proba.Main</servlet-class>
     </servlet>
 
     <servlet-mapping>

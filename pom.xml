@@ -8,24 +8,62 @@
     <artifactId>TheBookMaze</artifactId>
     <packaging>war</packaging>
 
+
+    <properties>
+        <spring-framework.version>4.1.4.RELEASE</spring-framework.version>
+        <jetty.version>9.2.11.v20150529</jetty.version>
+        <servlet.version>3.1.0</servlet.version>
+        <newrelic.agent.version>3.18.0</newrelic.agent.version>
+        <jackson.version>2.4.1</jackson.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>9.2.11.v20150529</version>
+            <version>${jetty.version}</version>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${servlet.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.newrelic.agent.java</groupId>
             <artifactId>newrelic-agent</artifactId>
-            <version>3.18.0</version>
+            <version>${newrelic.agent.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Spring MVC support-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+
+        <!-- Jackson JSON Processor -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
+
     <build>
         <finalName>TheBookMaze</finalName>
         <plugins>
@@ -73,6 +111,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
