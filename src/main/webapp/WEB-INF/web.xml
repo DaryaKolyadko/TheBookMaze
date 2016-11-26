@@ -11,18 +11,8 @@
         based on the recommendations of the Application Developer's Guide.
     </description>
 
-    <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>com.kolyadko_polovtseva.book_maze.proba.Main</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/maze</url-pattern>
-    </servlet-mapping>
-
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
+
 </web-app>

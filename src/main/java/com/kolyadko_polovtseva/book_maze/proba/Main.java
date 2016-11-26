@@ -1,15 +1,24 @@
 package com.kolyadko_polovtseva.book_maze.proba;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
-public class Main extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        resp.getWriter().print("Hello from Java! =)");
+@Controller
+public class Main {
+    //
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+//            throws ServletException, IOException {
+//        resp.getWriter().print("Hello from Java! =)");
+//    }
+    @RequestMapping(name = "/quote", method = RequestMethod.GET)
+    public ModelAndView quote(Model model) {
+        RestTemplate restTemplate = new RestTemplate();
+        Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+        model.addAttribute("quote", quote);
+        return new ModelAndView("../../index");
     }
 }

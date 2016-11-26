@@ -15,7 +15,8 @@
         <servlet.version>3.1.0</servlet.version>
         <newrelic.agent.version>3.18.0</newrelic.agent.version>
         <jackson.version>2.4.1</jackson.version>
-    </properties>
+        <log4j.version>2.0.2</log4j.version>
+</properties>
 
     <dependencies>
         <dependency>
@@ -31,12 +32,19 @@
         </dependency>
 
         <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
+
+        <dependency>
             <groupId>com.newrelic.agent.java</groupId>
             <artifactId>newrelic-agent</artifactId>
             <version>${newrelic.agent.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Spring MVC support-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -62,6 +70,19 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,18 +103,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
                 <executions>
-                    <!--<execution>-->
-                    <!--<id>copy-new-relic</id>-->
-                    <!--<phase>package</phase>-->
-                    <!--<goals>-->
-                    <!--<goal>copy-dependencies</goal>-->
-                    <!--</goals>-->
-                    <!--<configuration>-->
-                    <!--<includeGroupIds>com.newrelic.agent.java</includeGroupIds>-->
-                    <!--<includeArtifactIds>newrelic-agent</includeArtifactIds>-->
-                    <!--<stripVersion>true</stripVersion>-->
-                    <!--</configuration>-->
-                    <!--</execution>-->
                     <execution>
                         <phase>package</phase>
                         <goals>

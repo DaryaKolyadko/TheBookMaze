@@ -1,5 +1,7 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.kolyadko_polovtseva.book_maze.type.Role;
 
 import java.io.Serializable;
@@ -9,6 +11,8 @@ import java.util.Set;
 /**
  * Created by DaryaKolyadko on 25.11.2016.
  */
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Serializable {
     private String login;
     private String password;

@@ -1,11 +1,16 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by DaryaKolyadko on 26.11.2016.
  */
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PublishHouse implements Serializable {
     private Integer idPublishHouse;
     private String name;
