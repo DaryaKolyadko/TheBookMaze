@@ -32,10 +32,10 @@
         </div>
     </div>
 </nav>
-
-<div class="splash">
-    <div class="container">
+<img src="resources/img/header.png" width="100%"/>
+<%--<div class="splash">--%>
+    <%--<div class="container">--%>
         <%--<h1>Welcome to The Book Maze!</h1>--%>
         <%--<p>&#9899; Read \u2022; Download \u2022; Enjoy</p>--%>
-    </div>
-</div>
+    <%--</div>--%>
+<%--</div>--%>

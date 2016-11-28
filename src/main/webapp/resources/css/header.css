@@ -5,18 +5,18 @@ body {
     font-size: 17px;
 }
 
-/* Заставка */
-.splash {
-    /* Отступ для содержимого, помещенного в splash */
-    /*padding: 7em 8em;*/
-    background-image: url(../img/header.png);
-    background-size: contain;
-    /* Запрещаем фоновому изображению прокручиваться, т.е. делаем его неподвижным */
-    background-attachment: fixed;
-    color: #fff;
-    text-align: center;
-    height: 300px;
-}
+/*!* Заставка *!*/
+/*.splash {*/
+    /*!* Отступ для содержимого, помещенного в splash *!*/
+    /*!*padding: 7em 8em;*!*/
+    /*background-image: url(../img/header.png);*/
+    /*background-size: contain;*/
+    /*!* Запрещаем фоновому изображению прокручиваться, т.е. делаем его неподвижным *!*/
+    /*background-attachment: fixed;*/
+    /*color: #fff;*/
+    /*text-align: center;*/
+    /*height: 300px;*/
+/*}*/
 
 /* цвет фона и рамки навигационного меню */
 .navbar-default {
