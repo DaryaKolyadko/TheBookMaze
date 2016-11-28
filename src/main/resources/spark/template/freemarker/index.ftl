@@ -20,7 +20,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="alert alert-info text-center" role="alert">
+  <div class="alert alert-info text-center" userRole="alert">
     To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-java" class="alert-link">Getting Started with Java on Heroku</a> tutorial.
   </div>
   <hr>
@@ -56,7 +56,7 @@
       </ul>
     </div>
   </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
+   <div class="alert alert-info text-center" userRole="alert">
     Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
   </div>
 </div>

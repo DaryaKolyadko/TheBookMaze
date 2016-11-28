@@ -1,5 +1,6 @@
-package com.kolyadko_polovtseva.book_maze.proba;
+package com.kolyadko_polovtseva.book_maze.config;
 
+import com.kolyadko_polovtseva.book_maze.config.SpringWebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**

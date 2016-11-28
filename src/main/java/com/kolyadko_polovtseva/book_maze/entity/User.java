@@ -2,7 +2,6 @@ package com.kolyadko_polovtseva.book_maze.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.kolyadko_polovtseva.book_maze.type.Role;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +16,7 @@ public class User implements Serializable {
     private String login;
     private String password;
     private String libraryId;
-    private Role role;
+    private UserRole userRole;
     private String firstName;
     private String lastName;
     private Date birthDate;
@@ -47,12 +46,12 @@ public class User implements Serializable {
         this.libraryId = libraryId;
     }
 
-    public Role getRole() {
-        return role;
+    public UserRole getUserRole() {
+        return userRole;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public String getFirstName() {

@@ -8,15 +8,14 @@
     <artifactId>TheBookMaze</artifactId>
     <packaging>war</packaging>
 
-
     <properties>
-        <spring-framework.version>4.1.4.RELEASE</spring-framework.version>
+        <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
         <jetty.version>9.2.11.v20150529</jetty.version>
         <servlet.version>3.1.0</servlet.version>
         <newrelic.agent.version>3.18.0</newrelic.agent.version>
         <jackson.version>2.4.1</jackson.version>
         <log4j.version>2.0.2</log4j.version>
-</properties>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -31,9 +30,9 @@
         </dependency>
 
         <dependency>
-        <groupId>jstl</groupId>
-        <artifactId>jstl</artifactId>
-        <version>1.2</version>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <dependency>
@@ -80,6 +79,19 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
+        <!--Cloudinary-->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-taglib</artifactId>
+            <version>1.0.14</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -100,18 +112,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
                 <executions>
-                    <!--<execution>-->
-                    <!--<id>copy-new-relic</id>-->
-                    <!--<phase>package</phase>-->
-                    <!--<goals>-->
-                    <!--<goal>copy-dependencies</goal>-->
-                    <!--</goals>-->
-                    <!--<configuration>-->
-                    <!--<includeGroupIds>com.newrelic.agent.java</includeGroupIds>-->
-                    <!--<includeArtifactIds>newrelic-agent</includeArtifactIds>-->
-                    <!--<stripVersion>true</stripVersion>-->
-                    <!--</configuration>-->
-                    <!--</execution>-->
                     <execution>
                         <phase>package</phase>
                         <goals>
@@ -140,115 +140,4 @@
             </plugin>
         </plugins>
     </build>
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>org.eclipse.jetty</groupId>-->
-            <!--<artifactId>jetty-servlet</artifactId>-->
-            <!--<version>${jetty.version}</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>javax.servlet</groupId>-->
-            <!--<artifactId>javax.servlet-api</artifactId>-->
-            <!--<version>${servlet.version}</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>jstl</groupId>-->
-            <!--<artifactId>jstl</artifactId>-->
-            <!--<version>1.2</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>com.newrelic.agent.java</groupId>-->
-            <!--<artifactId>newrelic-agent</artifactId>-->
-            <!--<version>${newrelic.agent.version}</version>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; Spring MVC support&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-webmvc</artifactId>-->
-            <!--<version>${spring-framework.version}</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-web</artifactId>-->
-            <!--<version>${spring-framework.version}</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-core</artifactId>-->
-            <!--<version>${spring-framework.version}</version>-->
-        <!--</dependency>-->
-
-        <!--&lt;!&ndash; Jackson JSON Processor &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-            <!--<artifactId>jackson-databind</artifactId>-->
-            <!--<version>${jackson.version}</version>-->
-        <!--</dependency>-->
-
-        <!--&lt;!&ndash; Logging &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.logging.log4j</groupId>-->
-            <!--<artifactId>log4j-api</artifactId>-->
-            <!--<version>${log4j.version}</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.apache.logging.log4j</groupId>-->
-            <!--<artifactId>log4j-core</artifactId>-->
-            <!--<version>${log4j.version}</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
-
-    <!--<build>-->
-        <!--<finalName>TheBookMaze</finalName>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>com.heroku.sdk</groupId>-->
-                <!--<artifactId>heroku-maven-plugin</artifactId>-->
-                <!--<version>1.1.2</version>-->
-                <!--<configuration>-->
-                    <!--<includes>-->
-                        <!--<include>target/dependency/newrelic-agent.jar</include>-->
-                    <!--</includes>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                <!--<version>2.6</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>copy</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<artifactItems>-->
-                                <!--<artifactItem>-->
-                                    <!--<groupId>com.github.jsimone</groupId>-->
-                                    <!--<artifactId>webapp-runner</artifactId>-->
-                                    <!--<version>8.0.30.2</version>-->
-                                    <!--<destFileName>webapp-runner.jar</destFileName>-->
-                                <!--</artifactItem>-->
-                            <!--</artifactItems>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<source>1.8</source>-->
-                    <!--<target>1.8</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
 </project>

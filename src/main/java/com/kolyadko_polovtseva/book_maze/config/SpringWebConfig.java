@@ -1,4 +1,4 @@
-package com.kolyadko_polovtseva.book_maze.proba;
+package com.kolyadko_polovtseva.book_maze.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,9 +15,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc //mvc:annotation-driven
 @Configuration
-@ComponentScan({ "com.kolyadko_polovtseva.book_maze.proba" })
+@ComponentScan({ "com.kolyadko_polovtseva.book_maze" })
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -31,5 +30,4 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
-
 }
