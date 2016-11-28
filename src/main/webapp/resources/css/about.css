@@ -1,0 +1,26 @@
+.about-div {
+    background-color: #eeeeee;
+    border: dotted 4px #38917D;
+    padding: 20px 30px;
+}
+
+.about-header {
+    font-family: "Baskerville Old Face", serif;
+    color: #326363;
+    font-size: 63px;
+}
+
+.rotate-1 {
+    transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+}
+
+.rotate-2 {
+    transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+}
+
