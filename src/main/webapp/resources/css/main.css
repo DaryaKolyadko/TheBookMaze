@@ -15,8 +15,23 @@
     font-weight: bold;
 }
 
+.book-label {
+    font-family: "Baskerville Old Face", serif;
+    color: #2D7363;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .top-sm-margin {
     margin-top: 20px;
+}
+
+.bottom-sm-margin {
+    margin-bottom: 20px;
+}
+
+.top-lg-margin {
+    margin-top: 40px;
 }
 
 h2 {

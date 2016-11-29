@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -10,9 +11,9 @@
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/main.css"/>
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/about.css"/>
     <title>About The Book Maze</title>
-    <script src="resources/js/lib/jquery.min.js"></script>
-    <script src="resources/js/lib/bootstrap.min.js"></script>
-    <script src="resources/js/basic.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/lib/bootstrap.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/basic.js"></script>
 </head>
 <body>
 <%@include file="WEB-INF/jsp/include/menu.jsp" %>
@@ -37,7 +38,7 @@
             <img src="resources/img/about/maze-1.jpg" class="img-thumbnail rotate-1" width="33%">
             <img src="resources/img/about/maze-2.jpg" class="img-thumbnail" width="30%">
             <img src="resources/img/about/maze-3.jpg" class="img-thumbnail rotate-2" width="33%">
-            <a class="col-lg-offset-5 btn btn-info" href="<c:url value="/catalogue"/> ">Go to catalogue >></a>
+            <a class="col-lg-offset-5 btn btn-info" href="<c:url value="/Catalogue"/> ">Go to catalogue >></a>
         </div>
     </div>
 </div>

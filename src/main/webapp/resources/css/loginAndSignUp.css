@@ -1,0 +1,19 @@
+.sign-up-log-in-offer {
+    font-family: "Baskerville Old Face", serif;
+    color: #326363;
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: 30px;
+}
+
+.submit-button {
+    width: 40%;
+}
+
+.datepicker table tr td.active,
+.datepicker table tr td.active:hover,
+.datepicker table tr span.active,
+.datepicker table tr span.active:hover{
+    background: rgb(0, 97, 83) !important;
+    text-shadow: none;
+}
