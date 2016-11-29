@@ -1,4 +1,4 @@
-package com.kolyadko_polovtseva.book_maze.controller;
+package com.kolyadko_polovtseva.book_maze.controller.impl;
 
 import com.kolyadko_polovtseva.book_maze.proba.Quote;
 import org.springframework.stereotype.Controller;
@@ -13,8 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class MainController {
-
-    @RequestMapping(path= "/about", method = RequestMethod.GET)
+    @RequestMapping(path= "About", method = RequestMethod.GET)
     public ModelAndView quote(Model model) {
         RestTemplate restTemplate = new RestTemplate();
         Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
