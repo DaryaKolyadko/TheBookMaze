@@ -29,7 +29,7 @@
                 <div class="col-md-3 col-lg-3">
                     <figure>
                         <a href="<c:url value='/Category/2'/>" class="thumbnail">
-                            <img src='<cl:url src="81afb861-684c-45fc-a180-130f9245b631_yix0mx.jpg" width="190" height="240"/>'
+                            <img src='<cl:url src="81afb861-684c-45fc-a180-130f9245b631_yix0mx.jpg" width="190" height="240" secure="true"/>'
                                  class="img-responsive"/>
                         </a>
                         <figcaption>
@@ -40,7 +40,7 @@
                 <div class="col-md-3 col-lg-3">
                     <figure>
                         <a href="<c:url value='/Category/2'/>" class="thumbnail">
-                            <img src='<cl:url src="11870085_vjs8sa.jpg" width="190" height="240"/>'
+                            <img src='<cl:url src="11870085_vjs8sa.jpg" width="190" height="240" secure="true"/>'
                                  class="img-responsive"/>
                         </a>
                         <figcaption>

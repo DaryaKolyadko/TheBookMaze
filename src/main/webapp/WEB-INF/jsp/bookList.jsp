@@ -26,7 +26,7 @@
                 <div class="col-md-2 col-lg-2">
                     <figure>
                         <a href="<c:url value='/Book/2'/>" class="thumbnail">
-                            <img src='<cl:url src="11870085_vjs8sa.jpg" width="140" height="180"/>'
+                            <img src='<cl:url src="11870085_vjs8sa.jpg" width="140" height="180" secure="true"/>'
                                  class="img-responsive"/>
                         </a>
                         <figcaption>
@@ -37,7 +37,7 @@
                 <div class="col-md-2 col-lg-2">
                     <figure>
                         <a href="<c:url value='/Book/2'/>" class="thumbnail">
-                            <img src='<cl:url src="11870085_vjs8sa.jpg" width="140" height="180"/>'
+                            <img src='<cl:url src="11870085_vjs8sa.jpg" width="140" height="180" secure="true"/>'
                                  class="img-responsive"/>
                         </a>
                         <figcaption>

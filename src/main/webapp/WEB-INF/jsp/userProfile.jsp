@@ -44,7 +44,7 @@
                             <div class="col-md-12 col-lg-12 bottom-sm-margin">
                                 <div class="col-lg-5">
                                     <img src='<cl:url src="katherine-mcnamara-supports-girl-up-campaign-09_id6olb.jpg"
-                                width="160" height="160"/>' class="img-responsive img-circle img-thumbnail"/>
+                                width="160" height="160" secure="true"/>' class="img-responsive img-circle img-thumbnail"/>
                                 </div>
                                 <div class="col-lg-7 text-center">
                                     <table class="table borderless">
