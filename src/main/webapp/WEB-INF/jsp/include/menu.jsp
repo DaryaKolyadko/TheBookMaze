@@ -31,6 +31,17 @@
                 <li id="menu_sign_up">
                     <a href='<c:url value="/SignUp"/>'> Sign Up </a>
                 </li>
+                <li id="menu_profile" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false">Hello, Clary<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-item"><a href="<c:url value='/UserProfile/Clary'/>">
+                            <span class="fa fa-user fa-fw"></span>Profile </a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-item"><a href="<c:url value='/LogOut'/>"><span class="fa fa-sign-out fa-fw">
+                        </span>Log out </a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

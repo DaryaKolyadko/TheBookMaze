@@ -35,9 +35,9 @@
                 can be online! And if you prefer e-books there is a perfect opportunity for you!
                 Our site also allow you to download some books. Have fun and relax!
             </div>
-            <img src="resources/img/about/maze-1.jpg" class="img-thumbnail rotate-1" width="33%">
-            <img src="resources/img/about/maze-2.jpg" class="img-thumbnail" width="30%">
-            <img src="resources/img/about/maze-3.jpg" class="img-thumbnail rotate-2" width="33%">
+            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-1.jpg" class="img-thumbnail rotate-1" width="33%">
+            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-2.jpg" class="img-thumbnail" width="30%">
+            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-3.jpg" class="img-thumbnail rotate-2" width="33%">
             <a class="col-lg-offset-5 btn btn-info" href="<c:url value="/Catalogue"/> ">Go to catalogue >></a>
         </div>
     </div>

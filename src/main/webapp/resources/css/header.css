@@ -1,22 +1,9 @@
 /* Отступ сверху для содержимого body (высота navbar = 50px)*/
 body {
     padding-top: 50px;
-    background-color: #dddddd;
+    background-color: #e1e1e1;
     font-size: 17px;
 }
-
-/*!* Заставка *!*/
-/*.splash {*/
-    /*!* Отступ для содержимого, помещенного в splash *!*/
-    /*!*padding: 7em 8em;*!*/
-    /*background-image: url(../img/header.png);*/
-    /*background-size: contain;*/
-    /*!* Запрещаем фоновому изображению прокручиваться, т.е. делаем его неподвижным *!*/
-    /*background-attachment: fixed;*/
-    /*color: #fff;*/
-    /*text-align: center;*/
-    /*height: 300px;*/
-/*}*/
 
 /* цвет фона и рамки навигационного меню */
 .navbar-default {
@@ -123,4 +110,17 @@ body {
         color: #dddddd;
         background-color: #00796b !important;
     }
+}
+
+.dropdown-item {
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.dropdown-item span {
+    float: right;
+}
+
+.dropdown-menu {
+    font-size: 16px;
 }

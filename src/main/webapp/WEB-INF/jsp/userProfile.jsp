@@ -68,7 +68,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <a class="btn-lg btn-info btn-reserved" href="<c:url value="/clary/Reserved"/>">My reserved books</a>
+                                    <a class="btn-lg btn-info btn-reserved" href="<c:url value="clary/Reserved"/>">My reserved books</a>
                                 </div>
                             </div>
                         </div>

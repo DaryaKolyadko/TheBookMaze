@@ -1,0 +1,26 @@
+.button-row-parent {
+    display: inline-block;
+    width: 100%;
+}
+
+.right-button {
+    float: right;
+}
+
+.book-title {
+    font-size: 36px;
+    font-weight: bold;
+    border-bottom: solid 4px #faebcc;
+}
+
+.borderless td, .borderless th {
+    border: none !important;
+}
+
+.table > tbody > tr > td {
+    padding: 6px;
+}
+
+.attr-title {
+    font-weight: bold;
+}

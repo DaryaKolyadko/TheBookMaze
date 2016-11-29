@@ -17,8 +17,14 @@ public class LoginController {
     }
 
     @RequestMapping(path = "LogIn", method = RequestMethod.POST)
-    public ModelAndView login(Model model)  {
+    public ModelAndView login(Model model) {
         //TODO
         return new ModelAndView("lala");
+    }
+
+    @RequestMapping(path = "LogOut", method = RequestMethod.GET)
+    public ModelAndView logOut() {
+        //TODO
+        return new ModelAndView("../../index");
     }
 }

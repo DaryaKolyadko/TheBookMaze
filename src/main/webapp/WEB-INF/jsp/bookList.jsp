@@ -25,23 +25,23 @@
             <div class="container top-sm-margin">
                 <div class="col-md-2 col-lg-2">
                     <figure>
-                        <a href="<c:url value='/Book/2'/>" class="thumbnail">
+                        <a href="<c:url value='Young_adult/Book/2'/>" class="thumbnail">
                             <img src='<cl:url src="11870085_vjs8sa.jpg" width="140" height="180" secure="true"/>'
                                  class="img-responsive"/>
                         </a>
                         <figcaption>
-                            <a href="<c:url value='/Book/2'/>"><span class="book-label">The Fault in Our Stars</span></a>
+                            <a href="<c:url value='Young_adult/Book/2'/>"><span class="book-label">The Fault in Our Stars</span></a>
                         </figcaption>
                     </figure>
                 </div>
                 <div class="col-md-2 col-lg-2">
                     <figure>
-                        <a href="<c:url value='/Book/2'/>" class="thumbnail">
+                        <a href="<c:url value='Young_adult/Book/2'/>" class="thumbnail">
                             <img src='<cl:url src="11870085_vjs8sa.jpg" width="140" height="180" secure="true"/>'
                                  class="img-responsive"/>
                         </a>
                         <figcaption>
-                            <a href="<c:url value='/Book/2'/>"><span class="book-label">The Fault in Our Stars</span></a>
+                            <a href="<c:url value='Young_Adult/Book/2'/>"><span class="book-label">The Fault in Our Stars</span></a>
                         </figcaption>
                     </figure>
                 </div>

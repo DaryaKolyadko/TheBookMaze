@@ -12,17 +12,24 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class BookController extends AbstractController {
-    @RequestMapping(path = "Book/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "Catalogue/Category/{category}/Book/{id}", method = RequestMethod.GET)
     public ModelAndView getCatalogue(Model model) {
         configureCloudinary(model);
         //TODO
         return new ModelAndView("bookProfile");
     }
 
-    @RequestMapping(path = "{login}/Reserved", method = RequestMethod.GET)
+    @RequestMapping(path = "UserProfile/{login}/Reserved", method = RequestMethod.GET)
     public ModelAndView getReservedBooks(Model model) {
         configureCloudinary(model);
         //TODO
         return new ModelAndView("bookList");
+    }
+
+    @RequestMapping(path = "Catalogue/Category/{category}/Book/{id}/Reserve", method = RequestMethod.POST)
+    public ModelAndView reserveBook(Model model) {
+        configureCloudinary(model);
+        //TODO
+        return new ModelAndView("bookProfile");
     }
 }

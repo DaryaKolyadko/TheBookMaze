@@ -1,0 +1,8 @@
+.search-img {
+    border: dashed 3px #38917D;
+    border-radius: 25px;
+    transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+}

@@ -31,7 +31,11 @@
 }
 
 .top-lg-margin {
-    margin-top: 40px;
+     margin-top: 40px;
+ }
+
+.bottom-super-lg-margin {
+    margin-bottom: 100px;
 }
 
 h2 {
