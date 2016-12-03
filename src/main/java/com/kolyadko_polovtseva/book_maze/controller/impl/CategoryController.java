@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class CategoryController extends AbstractController {
-    @RequestMapping(path = "Catalogue/Category/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/Catalogue/Category/{id}", method = RequestMethod.GET)
     public ModelAndView getCatalogue(Model model) {
         configureCloudinary(model);
         //TODO

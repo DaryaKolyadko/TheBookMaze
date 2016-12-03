@@ -11,13 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class SignUpController {
-    @RequestMapping(path = "SignUp", method = RequestMethod.GET)
+    @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
     public ModelAndView showSignUp() {
         return new ModelAndView("signUp");
     }
 
-    @RequestMapping(path = "SignUp", method = RequestMethod.POST)
-    public ModelAndView signUp(Model model)  {
+    @RequestMapping(value = "/SignUp", method = RequestMethod.POST)
+    public ModelAndView signUp(Model model) {
         //TODO
         return new ModelAndView("lala");
     }

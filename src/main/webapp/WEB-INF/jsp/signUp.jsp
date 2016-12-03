@@ -24,8 +24,8 @@
     <div class="row">
         <div class="col-sm-12 col-md-11 col-lg-11 col-lg-offset-1 text-left">
             <h2>Sign Up In The Book Maze</h2>
-            <div class="container top-sm-margin col-lg-offset-4 text-center">
-                <form class="col-lg-4" action="<c:url value='/SignUp'/>" method="post">
+            <div class="container top-sm-margin col-lg-offset-4 col-lg-8 text-center">
+                <form class="col-lg-6" action="<c:url value='/SignUp'/>" method="post">
                     <input id="inputFirstName" class="form-control bottom-sm-margin" placeholder="First name" required
                            autofocus>
                     <input id="inputLastName" class="form-control bottom-sm-margin" placeholder="Last name" required>
@@ -46,7 +46,7 @@
             </div>
             <div class="top-lg-margin text-center">
                 <span class="sign-up-log-in-offer">Have an account...?</span>
-                <a href="<c:url value='/LogIn'/>" class="btn btn-success">Login</a>
+                <a href="<c:url value='/LogIn'/>" class="btn btn-success">Log In</a>
             </div>
         </div>
     </div>

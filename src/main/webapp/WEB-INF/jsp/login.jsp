@@ -21,16 +21,22 @@
     <div class="row">
         <div class="col-sm-12 col-md-11 col-lg-11 col-lg-offset-1 text-left">
             <h2>Log In The Book Maze</h2>
-            <div class="container top-sm-margin col-lg-offset-4 text-center">
-                <form class="col-lg-4" action="<c:url value='/LogIn'/>" method="post">
-                    <input id="inputLogin" class="form-control bottom-sm-margin" placeholder="Login" required autofocus>
-                    <input type="password" id="inputPassword" class="form-control bottom-sm-margin"
+            <c:url value="/j_spring_security_check" var="loginUrl"/>
+            <div class="container top-sm-margin col-lg-offset-4 col-lg-8 text-center">
+                <form class="col-lg-6" action="${loginUrl}" method="post">
+                    <c:if test="${param.containsKey('error')}">
+                        <div class="alert alert-danger">Invalid login or password, try again.</div>
+                    </c:if>
+                    <input name="inputLogin" class="form-control bottom-sm-margin" placeholder="Login" required
+                           autofocus>
+                    <input type="password" name="inputPassword" class="form-control bottom-sm-margin"
                            placeholder="Password" required>
-                    <button class="btn btn-success submit-button" type="submit">Log in</button>
+                    <button class="btn btn-success submit-button" type="submit">Log In</button>
                 </form>
             </div>
             <div class="top-lg-margin text-center">
-                <span class="sign-up-log-in-offer">Have no account...?</span><a href="<c:url value='/SignUp'/>" class="btn btn-info">Sign Up</a>
+                <span class="sign-up-log-in-offer">Have no account...?</span><a href="<c:url value='/SignUp'/>"
+                                                                                class="btn btn-info">Sign Up</a>
             </div>
         </div>
     </div>

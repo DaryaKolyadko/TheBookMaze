@@ -3,6 +3,8 @@ package com.kolyadko_polovtseva.book_maze.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -10,9 +12,10 @@ import java.util.Set;
 /**
  * Created by DaryaKolyadko on 25.11.2016.
  */
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table(name = "user")
 public class User implements Serializable {
+
     private String login;
     private String password;
     private String libraryId;

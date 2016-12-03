@@ -12,12 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class SearchController extends AbstractController {
-    @RequestMapping(path = "Search", method = RequestMethod.GET)
+    @RequestMapping(value = "/Search", method = RequestMethod.GET)
     public ModelAndView showSearch() {
         return new ModelAndView("search");
     }
 
-    @RequestMapping(path = "Search", method = RequestMethod.POST)
+    @RequestMapping(value = "/Search", method = RequestMethod.POST)
     public ModelAndView search(Model model) {
         //TODO params
         return new ModelAndView("bookList");

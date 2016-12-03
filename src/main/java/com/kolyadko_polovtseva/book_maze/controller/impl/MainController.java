@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class MainController {
-    @RequestMapping(path= "About", method = RequestMethod.GET)
+    @RequestMapping(value = "/About", method = RequestMethod.GET)
     public ModelAndView quote(Model model) {
         RestTemplate restTemplate = new RestTemplate();
         Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);

@@ -12,22 +12,37 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class BookController extends AbstractController {
-    @RequestMapping(path = "Catalogue/Category/{category}/Book/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/Catalogue/Category/{category}/Book/{id}", method = RequestMethod.GET)
     public ModelAndView getCatalogue(Model model) {
         configureCloudinary(model);
         //TODO
         return new ModelAndView("bookProfile");
     }
 
-    @RequestMapping(path = "UserProfile/{login}/Reserved", method = RequestMethod.GET)
+    @RequestMapping(value = "/UserProfile/{login}/Reserved", method = RequestMethod.GET)
     public ModelAndView getReservedBooks(Model model) {
         configureCloudinary(model);
         //TODO
         return new ModelAndView("bookList");
     }
 
-    @RequestMapping(path = "Catalogue/Category/{category}/Book/{id}/Reserve", method = RequestMethod.POST)
+    @RequestMapping(value = "/Catalogue/Category/{category}/Book/{id}/Reserve", method = RequestMethod.POST)
     public ModelAndView reserveBook(Model model) {
+        configureCloudinary(model);
+        //TODO
+        return new ModelAndView("bookProfile");
+    }
+
+
+    @RequestMapping(value = "/admin/Book/Add", method = RequestMethod.GET)
+    public ModelAndView showAddBook(Model model) {
+        configureCloudinary(model);
+        //TODO
+        return new ModelAndView("bookProfile");
+    }
+
+    @RequestMapping(value = "/admin/Book/Add", method = RequestMethod.POST)
+    public ModelAndView addBook(Model model) {
         configureCloudinary(model);
         //TODO
         return new ModelAndView("bookProfile");

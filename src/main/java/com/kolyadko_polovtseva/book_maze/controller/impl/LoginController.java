@@ -11,18 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class LoginController {
-    @RequestMapping(path = "LogIn", method = RequestMethod.GET)
+    @RequestMapping(value = "/LogIn", method = RequestMethod.GET)
     public ModelAndView showLogin() {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(path = "LogIn", method = RequestMethod.POST)
+    @RequestMapping(value = "/LogIn", method = RequestMethod.POST)
     public ModelAndView login(Model model) {
         //TODO
         return new ModelAndView("lala");
     }
 
-    @RequestMapping(path = "LogOut", method = RequestMethod.GET)
+    @RequestMapping(value = "/LogOut", method = RequestMethod.GET)
     public ModelAndView logOut() {
         //TODO
         return new ModelAndView("../../index");
