@@ -1,7 +1,6 @@
 package com.kolyadko_polovtseva.book_maze.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -10,13 +9,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 /**
- * Created by DaryaKolyadko on 26.11.2016.
+ * Created by DaryaKolyadko on 03.12.2016.
  */
-
-@EnableWebMvc //mvc:annotation-driven
 @Configuration
-@ComponentScan({ "com.kolyadko_polovtseva.book_maze" })
-public class SpringWebConfig extends WebMvcConfigurerAdapter {
+@EnableWebMvc
+public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
