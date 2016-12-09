@@ -26,7 +26,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:db.properties", "classpath:hibernate.properties"})
 public class HibernateConfig {
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DRIVER = "jdbc.driver";
     private static final String URL = "jdbc.url";
     private static final String USERNAME = "jdbc.username";
     private static final String PASSWORD = "jdbc.password";
@@ -37,7 +37,7 @@ public class HibernateConfig {
     @Bean
     public BasicDataSource basicDataSource() {
         BasicDataSource boneCPDataSource = new BasicDataSource();
-        boneCPDataSource.setDriverClassName(DRIVER);
+        boneCPDataSource.setDriverClassName(env.getProperty(DRIVER));
         boneCPDataSource.setUrl(env.getProperty(URL));
         boneCPDataSource.setUsername(env.getProperty(USERNAME));
         boneCPDataSource.setPassword(env.getProperty(PASSWORD));

@@ -2,9 +2,13 @@ package com.kolyadko_polovtseva.book_maze.config;
 
 //import com.kolyadko_polovtseva.book_maze.handler.CustomSuccessHandler;
 
+import com.kolyadko_polovtseva.book_maze.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +21,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 // springSecurityFilterChain
 @Configuration
 @EnableWebSecurity
+//@EnableAspectJAutoProxy
+//@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Order(1)
 public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
 //    CustomSuccessHandler customSuccessHandler;
 
@@ -25,7 +32,18 @@ public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
 //        auth.inMemoryAuthentication().withUser("clary").password("clary").roles("USER");
 //    }
 
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
+
+    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Autowired           //   @Qualifier("customUserDetailsService")
+    public void setUserDetailsService(CustomUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
@@ -47,12 +65,6 @@ public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable();
 //                .and().exceptionHandling().accessDeniedPage("/AccessDenied");
 //                .and().exceptionHandling().authenticationEntryPoint("/LogIn");
-    }
-
-    @Autowired
-    @Qualifier("customUserDetailsService")
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
     }
     //    @Autowired
 //    public void setCustomSuccessHandler(CustomSuccessHandler customSuccessHandler) {

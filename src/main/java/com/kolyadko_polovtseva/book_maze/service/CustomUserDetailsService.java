@@ -3,7 +3,9 @@ package com.kolyadko_polovtseva.book_maze.service;
 import com.kolyadko_polovtseva.book_maze.entity.User;
 import com.kolyadko_polovtseva.book_maze.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +20,9 @@ import java.util.List;
 /**
  * Created by DaryaKolyadko on 08.12.2016.
  */
-@Service("customUserDetailsService")
+@Service//("customUserDetailsService")
+//@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@EnableAspectJAutoProxy
 public class CustomUserDetailsService implements UserDetailsService {
     private UserServiceImpl userService;
 

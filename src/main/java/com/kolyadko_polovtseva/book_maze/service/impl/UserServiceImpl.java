@@ -4,18 +4,15 @@ import com.kolyadko_polovtseva.book_maze.dao.UserDao;
 import com.kolyadko_polovtseva.book_maze.entity.User;
 import com.kolyadko_polovtseva.book_maze.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by DaryaKolyadko on 09.12.2016.
  */
-@Component//("userService")
-@Transactional
+//@Component//("userService")
+//@Transactional
 //@EnableAspectJAutoProxy
+@Service
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
