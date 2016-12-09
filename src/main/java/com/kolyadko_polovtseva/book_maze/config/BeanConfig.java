@@ -4,6 +4,7 @@ import com.kolyadko_polovtseva.book_maze.util.CloudinaryManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 
@@ -14,6 +15,7 @@ import org.springframework.security.web.RedirectStrategy;
 @Configuration
 //@Import({ SecurityConfig.class })
 @ComponentScan({"com.kolyadko_polovtseva.book_maze.*"})
+@EnableJpaRepositories(basePackages = "com.kolyadko_polovtseva.book_maze.dao")
 public class BeanConfig {
     @Bean
     public CloudinaryManager cloudinaryManager() {

@@ -1,20 +1,31 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by DaryaKolyadko on 25.11.2016.
  */
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table(name = "author")
 public class Author implements Serializable {
+    @Id
+    @Column(name = "id_author")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAuthor;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @ManyToMany
+    @JoinTable(name = "book_author", joinColumns = {
+            @JoinColumn(name = "author_id_author", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "book_id_book",
+                    nullable = false, updatable = false)})
     private Set<Book> books;
 
     public Integer getIdAuthor() {

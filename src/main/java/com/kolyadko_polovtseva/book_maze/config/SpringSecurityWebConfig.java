@@ -2,11 +2,14 @@ package com.kolyadko_polovtseva.book_maze.config;
 
 //import com.kolyadko_polovtseva.book_maze.handler.CustomSuccessHandler;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * Created by DaryaKolyadko on 26.11.2016.
@@ -17,9 +20,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
 //    CustomSuccessHandler customSuccessHandler;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("clary").password("clary").roles("USER");
+    //    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("clary").password("clary").roles("USER");
+//    }
+
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
@@ -39,7 +49,12 @@ public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
 //                .and().exceptionHandling().authenticationEntryPoint("/LogIn");
     }
 
-//    @Autowired
+    @Autowired
+    @Qualifier("customUserDetailsService")
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+    //    @Autowired
 //    public void setCustomSuccessHandler(CustomSuccessHandler customSuccessHandler) {
 //        this.customSuccessHandler = customSuccessHandler;
 //    }

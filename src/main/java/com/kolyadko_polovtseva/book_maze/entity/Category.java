@@ -3,17 +3,27 @@ package com.kolyadko_polovtseva.book_maze.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by DaryaKolyadko on 25.11.2016.
  */
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table(name = "category")
 public class Category implements Serializable {
+    @Id
+    @Column(name = "id_category")
     private Integer idCategory;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Book> books;
 
     public Integer getIdCategory() {
@@ -32,6 +42,14 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Set<Book> getBooks() {
         return books;
     }
@@ -47,16 +65,18 @@ public class Category implements Serializable {
 
         Category category = (Category) o;
 
-        if (!idCategory.equals(category.idCategory)) return false;
-        if (!name.equals(category.name)) return false;
+        if (idCategory != null ? !idCategory.equals(category.idCategory) : category.idCategory != null) return false;
+        if (name != null ? !name.equals(category.name) : category.name != null) return false;
+        if (imageUrl != null ? !imageUrl.equals(category.imageUrl) : category.imageUrl != null) return false;
         return books != null ? books.equals(category.books) : category.books == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = idCategory.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = idCategory != null ? idCategory.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
         result = 31 * result + (books != null ? books.hashCode() : 0);
         return result;
     }
