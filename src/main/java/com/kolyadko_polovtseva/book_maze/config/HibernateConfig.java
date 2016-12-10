@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -34,14 +35,14 @@ public class HibernateConfig {
     private Environment env;
 
     @Bean
-    public BasicDataSource basicDataSource() {
-        BasicDataSource boneCPDataSource = new BasicDataSource();
-        boneCPDataSource.setDriverClassName(env.getProperty(DRIVER));
-        boneCPDataSource.setUrl(env.getProperty(URL));
-        boneCPDataSource.setUsername(env.getProperty(USERNAME));
-        boneCPDataSource.setPassword(env.getProperty(PASSWORD));
+    public DriverManagerDataSource basicDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(env.getProperty(DRIVER));
+        dataSource.setUrl(env.getProperty(URL));
+        dataSource.setUsername(env.getProperty(USERNAME));
+        dataSource.setPassword(env.getProperty(PASSWORD));
 //        boneCPDataSource.setIdleConnectionTestPeriodInMinutes(60);
-        boneCPDataSource.setMaxIdle(420);
+//        boneCPDataSource.setMaxIdle(420);
 //        boneCPDataSource.
 //        boneCPDataSource.setMaxConnectionsPerPartition(30);
 //        boneCPDataSource.setMinConnectionsPerPartition(10);
@@ -49,8 +50,7 @@ public class HibernateConfig {
 //        boneCPDataSource.setAcquireIncrement(5);
 //        boneCPDataSource.setStatementsCacheSize(100);
 //        boneCPDataSource.setReleaseHelperThreads(3);
-
-        return boneCPDataSource;
+        return dataSource;
     }
 
     @Bean
@@ -59,7 +59,7 @@ public class HibernateConfig {
     }
 
     @Bean
-    public EntityManagerFactory entityManagerFactory(BasicDataSource dataSource) {
+    public EntityManagerFactory entityManagerFactory(DriverManagerDataSource dataSource) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 //        vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setShowSql(true);
@@ -70,8 +70,12 @@ public class HibernateConfig {
         factory.setPackagesToScan("com.kolyadko_polovtseva.book_maze.entity");
         factory.setDataSource(dataSource);
         Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.setProperty("hibernate.connection.characterEncoding", "utf8");
+        properties.setProperty("hibernate.connection.CharSet", "utf8");
+        properties.setProperty("hibernate.connection.useUnicode", "true");
 //        properties.setProperty("hibernate.cache.use_second_level_cache", "true");
-        properties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
+//        properties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
 //        properties.setProperty("hibernate.cache.use_query_cache", "true");
 //        properties.setProperty("hibernate.generate_statistics", "true");
         factory.setJpaProperties(properties);
