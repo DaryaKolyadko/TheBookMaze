@@ -24,13 +24,12 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = {"classpath:db.properties", "classpath:hibernate.properties"})
+@PropertySource(value = {"classpath:db.properties"})
 public class HibernateConfig {
     private static final String DRIVER = "jdbc.driver";
     private static final String URL = "jdbc.url";
     private static final String USERNAME = "jdbc.username";
     private static final String PASSWORD = "jdbc.password";
-    private static final String HIBERNATE_DIALECT = "hibernate.dialect";
 
     private Environment env;
 
@@ -61,8 +60,8 @@ public class HibernateConfig {
     @Bean
     public EntityManagerFactory entityManagerFactory(BasicDataSource dataSource) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
-        vendorAdapter.setShowSql(false);
+//        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setShowSql(true);
         vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");//env.getProperty(HIBERNATE_DIALECT));
         vendorAdapter.setDatabase(Database.MYSQL);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
@@ -70,10 +69,10 @@ public class HibernateConfig {
         factory.setPackagesToScan("com.kolyadko_polovtseva.book_maze.entity");
         factory.setDataSource(dataSource);
         Properties properties = new Properties();
-        properties.setProperty("hibernate.cache.use_second_level_cache", "true");
+//        properties.setProperty("hibernate.cache.use_second_level_cache", "true");
         properties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
-        properties.setProperty("hibernate.cache.use_query_cache", "true");
-        properties.setProperty("hibernate.generate_statistics", "true");
+//        properties.setProperty("hibernate.cache.use_query_cache", "true");
+//        properties.setProperty("hibernate.generate_statistics", "true");
         factory.setJpaProperties(properties);
         factory.afterPropertiesSet();
         return factory.getObject();
