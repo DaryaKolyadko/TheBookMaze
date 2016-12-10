@@ -1,6 +1,7 @@
-package com.kolyadko_polovtseva.book_maze.service;
+package com.kolyadko_polovtseva.book_maze.config;
 
 import com.kolyadko_polovtseva.book_maze.entity.User;
+import com.kolyadko_polovtseva.book_maze.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Transactional
 @Service("customUserDetailsService")
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
     private UserService userService;
 
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
@@ -44,7 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Autowired
-    @Qualifier("userService")
+    @Qualifier("userServiceImpl")
     public void setUserService(UserService userService) {
         this.userService = userService;
     }

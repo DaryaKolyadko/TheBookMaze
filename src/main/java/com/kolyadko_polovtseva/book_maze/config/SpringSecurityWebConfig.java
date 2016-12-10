@@ -2,19 +2,15 @@ package com.kolyadko_polovtseva.book_maze.config;
 
 //import com.kolyadko_polovtseva.book_maze.handler.CustomSuccessHandler;
 
-import com.kolyadko_polovtseva.book_maze.service.UserDetailsServiceImpl;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -26,16 +22,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @ComponentScan("com.kolyadko_polovtseva.book_maze.*")
 public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
-//    private ShaPasswordEncoder passwordEncoder;
-//    private BasicDataSource basicDataSource;
-
     private UserDetailsService userDetails;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());
-//        auth.authenticationProvider(customAuthenticationProvider);
-//        auth.jdbcAuthentication().dataSource(basicDataSource).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -63,11 +54,6 @@ public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    @Autowired
-//    public void setPasswordEncoder(ShaPasswordEncoder passwordEncoder) {
-//        this.passwordEncoder = passwordEncoder;
-//    }
 
     @Autowired
     @Qualifier("customUserDetailsService")

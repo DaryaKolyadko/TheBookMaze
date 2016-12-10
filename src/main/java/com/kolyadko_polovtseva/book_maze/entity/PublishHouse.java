@@ -12,9 +12,11 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "publish_house")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PublishHouse implements Serializable {
     @Id
-    @Column(name="id_publish_house")
+    @Column(name = "id_publish_house")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPublishHouse;
 
@@ -55,17 +57,27 @@ public class PublishHouse implements Serializable {
 
         PublishHouse that = (PublishHouse) o;
 
-        if (!idPublishHouse.equals(that.idPublishHouse)) return false;
-        if (!name.equals(that.name)) return false;
+        if (idPublishHouse != null ? !idPublishHouse.equals(that.idPublishHouse) : that.idPublishHouse != null)
+            return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return books != null ? books.equals(that.books) : that.books == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = idPublishHouse.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = idPublishHouse != null ? idPublishHouse.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (books != null ? books.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "PublishHouse{" +
+                "idPublishHouse=" + idPublishHouse +
+                ", name='" + name + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

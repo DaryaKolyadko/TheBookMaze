@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by DaryaKolyadko on 09.12.2016.
  */
-@Repository//("userDao")
+@Repository
 public interface UserRepository extends CrudRepository<User, String> {
     User findUserByLoginAndPassword(String login, String password);
 }

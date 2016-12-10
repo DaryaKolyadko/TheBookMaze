@@ -12,6 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "role")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserRole implements Serializable {
     public static final String ADMIN = "ADMIN";
     public static final String USER = "USER";

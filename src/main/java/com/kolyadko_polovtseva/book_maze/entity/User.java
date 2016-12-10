@@ -1,7 +1,8 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,18 +14,21 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "user")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
 public class User implements Serializable {
     @Id
     @Column(name = "login")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String login;
 
+    @JsonProperty(value = "password")
     @Column(name = "password")
     private String password;
 
     @Column(name = "library_id")
     private String libraryId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "role_id")
     private UserRole userRole;
@@ -40,6 +44,18 @@ public class User implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<RegisterRecord> registerRecords;
+
+    public User() {
+    }
+
+    public User(String login, String password, String libraryId, String firstName, String lastName, Date birthDate) {
+        this.login = login;
+        this.password = password;
+        this.libraryId = libraryId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
 
     public String getLogin() {
         return login;
@@ -65,6 +81,7 @@ public class User implements Serializable {
         this.libraryId = libraryId;
     }
 
+    @JsonProperty(value = "roleName")
     public UserRole getUserRole() {
         return userRole;
     }
@@ -112,11 +129,12 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (!login.equals(user.login)) return false;
-        if (!password.equals(user.password)) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (libraryId != null ? !libraryId.equals(user.libraryId) : user.libraryId != null) return false;
-        if (!firstName.equals(user.firstName)) return false;
-        if (!lastName.equals(user.lastName)) return false;
+        if (userRole != null ? !userRole.equals(user.userRole) : user.userRole != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         if (birthDate != null ? !birthDate.equals(user.birthDate) : user.birthDate != null) return false;
         return registerRecords != null ? registerRecords.equals(user.registerRecords) : user.registerRecords == null;
 
@@ -124,13 +142,28 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = login.hashCode();
-        result = 31 * result + password.hashCode();
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (libraryId != null ? libraryId.hashCode() : 0);
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
+        result = 31 * result + (userRole != null ? userRole.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
         result = 31 * result + (registerRecords != null ? registerRecords.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", libraryId='" + libraryId + '\'' +
+                ", userRole=" + userRole +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", registerRecords=" + registerRecords +
+                '}';
     }
 }

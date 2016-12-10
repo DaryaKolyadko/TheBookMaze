@@ -1,5 +1,8 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -9,6 +12,8 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "book")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book implements Serializable {
     @Id
     @Column(name = "id_book")
@@ -37,6 +42,7 @@ public class Book implements Serializable {
     @JoinColumn(name = "category_id")
     private Category category;
 
+//    @Transient
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "publish_house_id")
     private PublishHouse publishHouse;
@@ -146,33 +152,50 @@ public class Book implements Serializable {
 
         Book book = (Book) o;
 
-        if (!idBook.equals(book.idBook)) return false;
-        if (!name.equals(book.name)) return false;
-        if (!pageNum.equals(book.pageNum)) return false;
-        if (!publishYear.equals(book.publishYear)) return false;
-        if (!description.equals(book.description)) return false;
+        if (idBook != null ? !idBook.equals(book.idBook) : book.idBook != null) return false;
+        if (name != null ? !name.equals(book.name) : book.name != null) return false;
+        if (pageNum != null ? !pageNum.equals(book.pageNum) : book.pageNum != null) return false;
+        if (publishYear != null ? !publishYear.equals(book.publishYear) : book.publishYear != null) return false;
+        if (description != null ? !description.equals(book.description) : book.description != null) return false;
         if (ebookUrl != null ? !ebookUrl.equals(book.ebookUrl) : book.ebookUrl != null) return false;
         if (imageUrl != null ? !imageUrl.equals(book.imageUrl) : book.imageUrl != null) return false;
-        if (!category.equals(book.category)) return false;
-        if (!publishHouse.equals(book.publishHouse)) return false;
+        if (category != null ? !category.equals(book.category) : book.category != null) return false;
+        if (publishHouse != null ? !publishHouse.equals(book.publishHouse) : book.publishHouse != null) return false;
         if (libraryBooks != null ? !libraryBooks.equals(book.libraryBooks) : book.libraryBooks != null) return false;
-        return authors.equals(book.authors);
+        return authors != null ? authors.equals(book.authors) : book.authors == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = idBook.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + pageNum.hashCode();
-        result = 31 * result + publishYear.hashCode();
-        result = 31 * result + description.hashCode();
+        int result = idBook != null ? idBook.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (pageNum != null ? pageNum.hashCode() : 0);
+        result = 31 * result + (publishYear != null ? publishYear.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (ebookUrl != null ? ebookUrl.hashCode() : 0);
         result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
-        result = 31 * result + category.hashCode();
-        result = 31 * result + publishHouse.hashCode();
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (publishHouse != null ? publishHouse.hashCode() : 0);
         result = 31 * result + (libraryBooks != null ? libraryBooks.hashCode() : 0);
-        result = 31 * result + authors.hashCode();
+        result = 31 * result + (authors != null ? authors.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "idBook=" + idBook +
+                ", name='" + name + '\'' +
+                ", pageNum=" + pageNum +
+                ", publishYear=" + publishYear +
+                ", description='" + description + '\'' +
+                ", ebookUrl='" + ebookUrl + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                ", publishHouse=" + publishHouse +
+                ", libraryBooks=" + libraryBooks +
+                ", authors=" + authors +
+                '}';
     }
 }

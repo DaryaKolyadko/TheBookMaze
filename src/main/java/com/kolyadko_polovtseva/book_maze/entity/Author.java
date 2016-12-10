@@ -1,5 +1,8 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -9,6 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "author")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "books"})
 public class Author implements Serializable {
     @Id
     @Column(name = "id_author")
@@ -21,6 +25,7 @@ public class Author implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    @JsonProperty("books")
     @ManyToMany
     @JoinTable(name = "book_author", joinColumns = {
             @JoinColumn(name = "author_id_author", nullable = false, updatable = false)},
@@ -67,19 +72,29 @@ public class Author implements Serializable {
 
         Author author = (Author) o;
 
-        if (!idAuthor.equals(author.idAuthor)) return false;
-        if (!firstName.equals(author.firstName)) return false;
-        if (!lastName.equals(author.lastName)) return false;
+        if (idAuthor != null ? !idAuthor.equals(author.idAuthor) : author.idAuthor != null) return false;
+        if (firstName != null ? !firstName.equals(author.firstName) : author.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(author.lastName) : author.lastName != null) return false;
         return books != null ? books.equals(author.books) : author.books == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = idAuthor.hashCode();
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
+        int result = idAuthor != null ? idAuthor.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (books != null ? books.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "idAuthor=" + idAuthor +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

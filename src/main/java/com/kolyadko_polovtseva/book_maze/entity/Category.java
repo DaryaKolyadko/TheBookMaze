@@ -12,6 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "category")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
 public class Category implements Serializable {
     @Id
     @Column(name = "id_category")
@@ -80,5 +81,15 @@ public class Category implements Serializable {
         result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
         result = 31 * result + (books != null ? books.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "idCategory=" + idCategory +
+                ", name='" + name + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", books=" + books +
+                '}';
     }
 }
