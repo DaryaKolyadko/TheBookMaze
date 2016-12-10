@@ -6,14 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * Created by DaryaKolyadko on 28.11.2016.
  */
-//@EnableWebMvc
 @Configuration
-//@Import({ SecurityConfig.class })
 @ComponentScan({"com.kolyadko_polovtseva.book_maze.*"})
 @EnableJpaRepositories(basePackages = "com.kolyadko_polovtseva.book_maze.dao")
 public class BeanConfig {
@@ -22,15 +21,16 @@ public class BeanConfig {
         return new CloudinaryManager();
     }
 
-//    @Bean
-//    public UserDetailsServiceImpl customUserDetailsService() {
-//        return new UserDetailsServiceImpl();
-//    }
-
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public UserDetailsServiceImpl customUserDetailsService() {
+        return new UserDetailsServiceImpl();
     }
+
+
+//    @Bean
+//    public ShaPasswordEncoder passwordEncoder(){
+//        return new ShaPasswordEncoder(256);
+//    }
 //    @Bean
 //    public RedirectStrategy redirectStrategy() {
 //        return new DefaultRedirectStrategy();

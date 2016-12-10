@@ -12,6 +12,7 @@ import java.util.Date;
 public class RegisterRecord implements Serializable {
     @Id
     @Column(name = "id_register")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRegister;
 
     @ManyToOne(fetch = FetchType.LAZY)

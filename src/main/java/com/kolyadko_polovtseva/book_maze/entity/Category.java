@@ -15,6 +15,7 @@ import java.util.Set;
 public class Category implements Serializable {
     @Id
     @Column(name = "id_category")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategory;
 
     @Column(name = "name")

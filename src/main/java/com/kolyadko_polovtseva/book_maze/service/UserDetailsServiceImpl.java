@@ -17,19 +17,20 @@ import java.util.List;
 /**
  * Created by DaryaKolyadko on 08.12.2016.
  */
+@Transactional
 @Service("customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
     private UserService userService;
 
-    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userService.findUserByLogin(login);
-        System.out.println("User : " + user);
+        User user = userService.findByLogin(login);
 
         if (user == null) {
             System.out.println("User not found");
             throw new UsernameNotFoundException("Username not found");
         }
+
+        System.out.println("User : " + user.getLogin());
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
                 true, true, true, true, getGrantedAuthorities(user));
     }

@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
-    @Override
-    public User findUserByLoginAndPassword(String login, String password) {
-        return userRepository.findUserByLoginAndPassword(login, password);
-    }
+//    @Override
+//    public User findUserByLoginAndPassword(String login, String password) {
+//        return userRepository.findUserByLoginAndPassword(login, password);
+//    }
 
     @Override
-    public User findUserByLogin(String login) {
+    public User findByLogin(String login) {
         return userRepository.findOne(login);
     }
 

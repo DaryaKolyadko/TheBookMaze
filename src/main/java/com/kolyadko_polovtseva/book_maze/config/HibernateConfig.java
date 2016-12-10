@@ -42,6 +42,7 @@ public class HibernateConfig {
         boneCPDataSource.setPassword(env.getProperty(PASSWORD));
 //        boneCPDataSource.setIdleConnectionTestPeriodInMinutes(60);
         boneCPDataSource.setMaxIdle(420);
+//        boneCPDataSource.
 //        boneCPDataSource.setMaxConnectionsPerPartition(30);
 //        boneCPDataSource.setMinConnectionsPerPartition(10);
 //        boneCPDataSource.setPartitionCount(3);

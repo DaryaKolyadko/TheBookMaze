@@ -15,7 +15,7 @@ public class LibraryBook implements Serializable {
     private String idLibraryBook;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_book")
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "libraryBook")
