@@ -18,7 +18,6 @@ import java.util.Set;
 public class User implements Serializable {
     @Id
     @Column(name = "login")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String login;
 
     @JsonProperty(value = "password")
@@ -42,6 +41,7 @@ public class User implements Serializable {
     @Column(name = "birth_date")
     private Date birthDate;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<RegisterRecord> registerRecords;
 

@@ -25,13 +25,11 @@ import java.util.Date;
 public class LoginController {
     @RequestMapping(value = "/LogIn", method = RequestMethod.GET)
     public ModelAndView showLogin() {
-
         return new ModelAndView("login");
     }
 
     @RequestMapping(value = "/LogIn", method = RequestMethod.POST)
     public ModelAndView login(Model model) {
-        //TODO
         return new ModelAndView("lala");
     }
 

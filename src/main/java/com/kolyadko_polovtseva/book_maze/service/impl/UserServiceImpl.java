@@ -7,6 +7,7 @@ import com.kolyadko_polovtseva.book_maze.entity.UserRole;
 import com.kolyadko_polovtseva.book_maze.service.UserService;
 import com.kolyadko_polovtseva.book_maze.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+    @Autowired
+    private ShaPasswordEncoder passwordEncoder;
+
     @Override
     public User findByLoginAndPassword(String login, String password) {
         return userRepository.findUserByLoginAndPassword(login, password);
@@ -36,6 +40,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user, String role) throws ServiceException {
         UserRole userRole = userRoleRepository.findUserRoleByRoleName(role);
         user.setUserRole(userRole);
+        user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));
         userRepository.save(user);
     }
 }
