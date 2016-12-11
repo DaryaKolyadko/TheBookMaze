@@ -1,7 +1,6 @@
 package com.kolyadko_polovtseva.book_maze.controller.impl;
 
 import com.kolyadko_polovtseva.book_maze.controller.AbstractController;
-import com.kolyadko_polovtseva.book_maze.entity.Book;
 import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Set;
 
 /**
  * Created by DaryaKolyadko on 28.11.2016.

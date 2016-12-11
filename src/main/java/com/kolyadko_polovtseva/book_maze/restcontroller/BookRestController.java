@@ -1,9 +1,11 @@
 package com.kolyadko_polovtseva.book_maze.restcontroller;
 
-import com.kolyadko_polovtseva.book_maze.entity.*;
+import com.kolyadko_polovtseva.book_maze.entity.Book;
+import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
+import com.kolyadko_polovtseva.book_maze.entity.RegisterRecord;
+import com.kolyadko_polovtseva.book_maze.entity.User;
 import com.kolyadko_polovtseva.book_maze.service.BookService;
 import com.kolyadko_polovtseva.book_maze.service.RegisterRecordService;
-import com.kolyadko_polovtseva.book_maze.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;

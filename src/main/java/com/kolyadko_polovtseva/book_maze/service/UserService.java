@@ -8,6 +8,8 @@ import com.kolyadko_polovtseva.book_maze.exception.ServiceException;
  */
 public interface UserService {
     User findByLoginAndPassword(String login, String password);
+
     User findByLogin(String login);
+
     void save(User user, String role) throws ServiceException;
 }

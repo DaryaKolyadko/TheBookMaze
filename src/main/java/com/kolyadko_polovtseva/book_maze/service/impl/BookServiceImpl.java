@@ -8,7 +8,6 @@ import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
 import com.kolyadko_polovtseva.book_maze.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

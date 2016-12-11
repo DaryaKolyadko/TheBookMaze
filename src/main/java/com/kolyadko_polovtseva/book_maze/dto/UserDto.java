@@ -1,7 +1,5 @@
 package com.kolyadko_polovtseva.book_maze.dto;
 
-import java.util.Date;
-
 /**
  * Created by DaryaKolyadko on 25.11.2016.
  */

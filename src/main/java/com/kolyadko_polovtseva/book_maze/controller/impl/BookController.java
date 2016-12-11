@@ -28,7 +28,7 @@ public class BookController extends AbstractController {
 
     @RequestMapping(value = "/Catalogue/Category/{category}/Book/{book}", method = RequestMethod.GET)
     public ModelAndView getBook(Model model, @PathVariable Integer category,
-                                     @PathVariable Integer book) {
+                                @PathVariable Integer book) {
         configureCloudinary(model);
         Book currentBook = bookService.findBookByCategoryAndBookId(categoryService.findById(category), book);
         model.addAttribute("book", currentBook);

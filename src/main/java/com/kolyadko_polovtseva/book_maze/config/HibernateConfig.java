@@ -1,6 +1,5 @@
 package com.kolyadko_polovtseva.book_maze.config;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
