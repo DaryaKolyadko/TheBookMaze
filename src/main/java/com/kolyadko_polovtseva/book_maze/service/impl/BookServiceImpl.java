@@ -8,6 +8,7 @@ import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
 import com.kolyadko_polovtseva.book_maze.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,5 +53,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public LibraryBook findLibraryBook(Book book) {
         return libraryBookRepository.findLibraryBookByBook(book);
+    }
+
+    @Override
+    public Book findBookByCategoryAndBookId(Category category, Integer bookId) {
+        return bookRepository.findByCategoryAndIdBook(category, bookId);
     }
 }

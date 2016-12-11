@@ -1,3 +1,4 @@
 availbaleLibraryCopies
 reserved book page
 fix data format on user profile
+fix russian text from form

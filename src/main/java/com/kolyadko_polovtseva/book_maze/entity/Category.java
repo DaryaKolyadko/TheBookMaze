@@ -1,7 +1,10 @@
 package com.kolyadko_polovtseva.book_maze.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,6 +28,7 @@ public class Category implements Serializable {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Book> books;
 
@@ -74,14 +78,14 @@ public class Category implements Serializable {
 
     }
 
-    @Override
-    public int hashCode() {
-        int result = idCategory != null ? idCategory.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
-        result = 31 * result + (books != null ? books.hashCode() : 0);
-        return result;
-    }
+//    @Override
+//    public int hashCode() {
+//        int result = idCategory != null ? idCategory.hashCode() : 0;
+//        result = 31 * result + (name != null ? name.hashCode() : 0);
+//        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
+//        result = 31 * result + (books != null ? books.hashCode() : 0);
+//        return result;
+//    }
 
     @Override
     public String toString() {

@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * Created by nadez on 12/3/2016.
  */
-@Component("categoryServiceImpl")
 @Transactional
+@Component("categoryServiceImpl")
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
@@ -21,5 +21,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public Category findById(Integer id) {
+        return categoryRepository.findOne(id);
     }
 }

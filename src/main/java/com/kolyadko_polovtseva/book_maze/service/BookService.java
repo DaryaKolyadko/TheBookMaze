@@ -15,4 +15,5 @@ public interface BookService {
     Book find(Integer bookId);
     LibraryBook findLibraryBook(String bookId);
     LibraryBook findLibraryBook(Book book);
+    Book findBookByCategoryAndBookId(Category category, Integer bookId);
 }

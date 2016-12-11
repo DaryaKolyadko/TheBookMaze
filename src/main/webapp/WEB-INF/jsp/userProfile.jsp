@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="cl" uri="http://cloudinary.com/jsp/taglib" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -15,7 +16,7 @@
     <script src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/resources/js/lib/bootstrap.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/resources/js/basic.js"></script>
-    <title>User: Clary Fairchild</title>
+    <title>User: ${profile.firstName} ${profile.lastName}</title>
 </head>
 <body>
 <%@include file="include/menu.jsp" %>
@@ -30,7 +31,7 @@
                             <%--<c:if test="${profile.id eq userContainer.object.id}">--%>
                             <form id="form-edit-profile" method="get"
                                   action="<c:url value="/EditProfile"/>" hidden>
-                                <input type="text" name="login" value="${profile.id}">
+                                <input type="text" name="login" value="${profile.login}">
                             </form>
                             <button class="btn btn-default"
                                     onclick="$('#form-edit-profile').submit()">
@@ -51,24 +52,24 @@
                                         <tbody>
                                         <tr>
                                             <td class="profile-title">Login</td>
-                                            <td>clary</td>
+                                            <td>${profile.login}</td>
                                         </tr>
                                         <tr>
                                             <td class="profile-title">First name</td>
-                                            <td>Clary</td>
+                                            <td>${profile.firstName}</td>
                                         </tr>
                                         <tr>
                                             <td class="profile-title">Last name</td>
-                                            <td>Fairchild</td>
+                                            <td>${profile.lastName}</td>
                                         </tr>
                                         <tr>
                                             <td class="profile-title">Birth date</td>
-                                            <td>11/22/1994</td>
-                                            <%--<td><fmt:formatDate value="${profile.birthDate}"/></td>--%>
+                                            <td>${profile.birthDate}</td>
+                                            <%--<td><fmt:formatDate type="date" value="${profile.birthDate}" pattern="MM/dd/yyyy"/></td>--%>
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <a class="btn-lg btn-info btn-reserved" href="<c:url value="clary/Reserved"/>">My reserved books</a>
+                                    <a class="btn-lg btn-info btn-reserved" href="<c:url value="/${profile.login}/Reserved"/>">My reserved books</a>
                                 </div>
                             </div>
                         </div>
