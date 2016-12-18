@@ -82,8 +82,6 @@ public class RegisterRecord implements Serializable {
         RegisterRecord that = (RegisterRecord) o;
 
         if (idRegister != null ? !idRegister.equals(that.idRegister) : that.idRegister != null) return false;
-        if (libraryBook != null ? !libraryBook.equals(that.libraryBook) : that.libraryBook != null) return false;
-        if (user != null ? !user.equals(that.user) : that.user != null) return false;
         if (reserveDate != null ? !reserveDate.equals(that.reserveDate) : that.reserveDate != null) return false;
         return returnDeadline != null ? returnDeadline.equals(that.returnDeadline) : that.returnDeadline == null;
 
@@ -92,21 +90,8 @@ public class RegisterRecord implements Serializable {
     @Override
     public int hashCode() {
         int result = idRegister != null ? idRegister.hashCode() : 0;
-        result = 31 * result + (libraryBook != null ? libraryBook.hashCode() : 0);
-        result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (reserveDate != null ? reserveDate.hashCode() : 0);
         result = 31 * result + (returnDeadline != null ? returnDeadline.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "RegisterRecord{" +
-                "idRegister=" + idRegister +
-                ", libraryBook=" + libraryBook +
-                ", user=" + user +
-                ", reserveDate=" + reserveDate +
-                ", returnDeadline=" + returnDeadline +
-                '}';
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by nadez on 12/4/2016.
@@ -34,9 +35,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> findByCategory(Integer categoryId) {
+    public Set<Book> findByCategory(Integer categoryId) {
         Category category = categoryRepository.findOne(categoryId);
-        return bookRepository.findBooksByCategory(category);
+        return category.getBooks();
     }
 
     @Override
@@ -45,7 +46,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public LibraryBook findLibraryBook(String bookId) {
+    public LibraryBook findLibraryBook(Integer bookId) {
         return libraryBookRepository.findOne(bookId);
     }
 
@@ -55,7 +56,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findBookByCategoryAndBookId(Category category, Integer bookId) {
-        return bookRepository.findByCategoryAndIdBook(category, bookId);
+    public Book findBookByCategoryIdAndBookId(Integer categoryId, Integer bookId) {
+        return bookRepository.findByCategoryIdCategoryAndIdBook(categoryId, bookId);
+    }
+
+    @Override
+    public void save(Book book) {
+        bookRepository.save(book);
     }
 }

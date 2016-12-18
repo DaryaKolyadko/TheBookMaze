@@ -76,7 +76,6 @@ public class Author implements Serializable {
         if (firstName != null ? !firstName.equals(author.firstName) : author.firstName != null) return false;
         if (lastName != null ? !lastName.equals(author.lastName) : author.lastName != null) return false;
         return books != null ? books.equals(author.books) : author.books == null;
-
     }
 
     @Override
@@ -86,15 +85,5 @@ public class Author implements Serializable {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (books != null ? books.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "idAuthor=" + idAuthor +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", books=" + books +
-                '}';
     }
 }

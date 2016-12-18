@@ -37,9 +37,6 @@ public class SignUpController {
     private UserDtoToUserConverter converter;
 
     @Autowired
-    UserRepository ur;
-
-    @Autowired
     UserRoleRepository roleRep;
 
     @RequestMapping(value = "/SignUp", method = RequestMethod.GET)

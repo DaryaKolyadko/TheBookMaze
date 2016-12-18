@@ -152,18 +152,4 @@ public class User implements Serializable {
         result = 31 * result + (registerRecords != null ? registerRecords.hashCode() : 0);
         return result;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", libraryId='" + libraryId + '\'' +
-                ", userRole=" + userRole +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", registerRecords=" + registerRecords +
-                '}';
-    }
 }

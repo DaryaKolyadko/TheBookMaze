@@ -56,4 +56,23 @@ public class UserRole implements Serializable {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserRole)) return false;
+
+        UserRole userRole = (UserRole) o;
+
+        if (roleId != null ? !roleId.equals(userRole.roleId) : userRole.roleId != null) return false;
+        return roleName != null ? roleName.equals(userRole.roleName) : userRole.roleName == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = roleId != null ? roleId.hashCode() : 0;
+        result = 31 * result + (roleName != null ? roleName.hashCode() : 0);
+        return result;
+    }
 }

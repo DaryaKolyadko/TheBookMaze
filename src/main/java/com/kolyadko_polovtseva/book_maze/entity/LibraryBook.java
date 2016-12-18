@@ -18,7 +18,7 @@ import java.util.Set;
 public class LibraryBook implements Serializable {
     @Id
     @Column(name = "id_library_book")
-    private String idLibraryBook;
+    private Integer idLibraryBook;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
@@ -28,11 +28,11 @@ public class LibraryBook implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "libraryBook")
     private Set<RegisterRecord> registerRecords;
 
-    public String getIdLibraryBook() {
+    public Integer getIdLibraryBook() {
         return idLibraryBook;
     }
 
-    public void setIdLibraryBook(String idLibraryBook) {
+    public void setIdLibraryBook(Integer idLibraryBook) {
         this.idLibraryBook = idLibraryBook;
     }
 
@@ -72,14 +72,5 @@ public class LibraryBook implements Serializable {
         result = 31 * result + (book != null ? book.hashCode() : 0);
         result = 31 * result + (registerRecords != null ? registerRecords.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "LibraryBook{" +
-                "idLibraryBook='" + idLibraryBook + '\'' +
-                ", book=" + book +
-                ", registerRecords=" + registerRecords +
-                '}';
     }
 }

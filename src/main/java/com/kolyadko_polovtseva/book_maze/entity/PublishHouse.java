@@ -57,27 +57,13 @@ public class PublishHouse implements Serializable {
 
         PublishHouse that = (PublishHouse) o;
 
-        if (idPublishHouse != null ? !idPublishHouse.equals(that.idPublishHouse) : that.idPublishHouse != null)
-            return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        return books != null ? books.equals(that.books) : that.books == null;
-
+        return idPublishHouse != null ? idPublishHouse.equals(that.idPublishHouse) : that.idPublishHouse == null && (name != null ? !name.equals(that.name) : that.name != null);
     }
 
     @Override
     public int hashCode() {
         int result = idPublishHouse != null ? idPublishHouse.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (books != null ? books.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "PublishHouse{" +
-                "idPublishHouse=" + idPublishHouse +
-                ", name='" + name + '\'' +
-                ", books=" + books +
-                '}';
     }
 }

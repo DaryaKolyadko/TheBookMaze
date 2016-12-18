@@ -5,20 +5,25 @@ import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by nadez on 12/3/2016.
  */
 public interface BookService {
+    Integer RESERVE_PERIOD = 10;
+
     List<Book> findByCategory(Category category);
 
-    List<Book> findByCategory(Integer categoryId);
+    Set<Book> findByCategory(Integer categoryId);
 
     Book find(Integer bookId);
 
-    LibraryBook findLibraryBook(String bookId);
+    LibraryBook findLibraryBook(Integer bookId);
 
     LibraryBook findLibraryBook(Book book);
 
-    Book findBookByCategoryAndBookId(Category category, Integer bookId);
+    Book findBookByCategoryIdAndBookId(Integer categoryId, Integer bookId);
+
+    void save(Book book);
 }

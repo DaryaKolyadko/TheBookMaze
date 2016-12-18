@@ -158,43 +158,20 @@ public class Book implements Serializable {
         if (description != null ? !description.equals(book.description) : book.description != null) return false;
         if (ebookUrl != null ? !ebookUrl.equals(book.ebookUrl) : book.ebookUrl != null) return false;
         if (imageUrl != null ? !imageUrl.equals(book.imageUrl) : book.imageUrl != null) return false;
-        if (category != null ? !category.equals(book.category) : book.category != null) return false;
-        if (publishHouse != null ? !publishHouse.equals(book.publishHouse) : book.publishHouse != null) return false;
-        if (libraryBooks != null ? !libraryBooks.equals(book.libraryBooks) : book.libraryBooks != null) return false;
-        return authors != null ? authors.equals(book.authors) : book.authors == null;
+        return publishHouse != null ? !publishHouse.equals(book.publishHouse) : book.publishHouse != null;
 
     }
 
-//    @Override
-//    public int hashCode() {
-//        int result = idBook != null ? idBook.hashCode() : 0;
-//        result = 31 * result + (name != null ? name.hashCode() : 0);
-//        result = 31 * result + (pageNum != null ? pageNum.hashCode() : 0);
-//        result = 31 * result + (publishYear != null ? publishYear.hashCode() : 0);
-//        result = 31 * result + (description != null ? description.hashCode() : 0);
-//        result = 31 * result + (ebookUrl != null ? ebookUrl.hashCode() : 0);
-//        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
-//        result = 31 * result + (category != null ? category.hashCode() : 0);
-//        result = 31 * result + (publishHouse != null ? publishHouse.hashCode() : 0);
-//        result = 31 * result + (libraryBooks != null ? libraryBooks.hashCode() : 0);
-//        result = 31 * result + (authors != null ? authors.hashCode() : 0);
-//        return result;
-//    }
-
     @Override
-    public String toString() {
-        return "Book{" +
-                "idBook=" + idBook +
-                ", name='" + name + '\'' +
-                ", pageNum=" + pageNum +
-                ", publishYear=" + publishYear +
-                ", description='" + description + '\'' +
-                ", ebookUrl='" + ebookUrl + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", category=" + category +
-                ", publishHouse=" + publishHouse +
-                ", libraryBooks=" + libraryBooks +
-                ", authors=" + authors +
-                '}';
+    public int hashCode() {
+        int result = idBook != null ? idBook.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (pageNum != null ? pageNum.hashCode() : 0);
+        result = 31 * result + (publishYear != null ? publishYear.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (ebookUrl != null ? ebookUrl.hashCode() : 0);
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
+        result = 31 * result + (publishHouse != null ? publishHouse.hashCode() : 0);
+        return result;
     }
 }

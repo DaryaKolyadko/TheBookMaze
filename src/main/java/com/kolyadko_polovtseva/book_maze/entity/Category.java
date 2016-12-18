@@ -75,22 +75,12 @@ public class Category implements Serializable {
 
     }
 
-//    @Override
-//    public int hashCode() {
-//        int result = idCategory != null ? idCategory.hashCode() : 0;
-//        result = 31 * result + (name != null ? name.hashCode() : 0);
-//        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
-//        result = 31 * result + (books != null ? books.hashCode() : 0);
-//        return result;
-//    }
-
     @Override
-    public String toString() {
-        return "Category{" +
-                "idCategory=" + idCategory +
-                ", name='" + name + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", books=" + books +
-                '}';
+    public int hashCode() {
+        int result = idCategory != null ? idCategory.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
+        result = 31 * result + (books != null ? books.hashCode() : 0);
+        return result;
     }
 }

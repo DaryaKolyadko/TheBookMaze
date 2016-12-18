@@ -2,6 +2,7 @@ package com.kolyadko_polovtseva.book_maze.service.impl;
 
 import com.kolyadko_polovtseva.book_maze.dao.CategoryRepository;
 import com.kolyadko_polovtseva.book_maze.entity.Category;
+import com.kolyadko_polovtseva.book_maze.exception.ServiceException;
 import com.kolyadko_polovtseva.book_maze.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,5 +27,21 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category findById(Integer id) {
         return categoryRepository.findOne(id);
+    }
+
+    @Override
+    public Category findByName(String name) {
+        return categoryRepository.findByName(name);
+    }
+
+    @Override
+    public void save(Category category) throws ServiceException {
+        Category check = categoryRepository.findByName(category.getName());
+
+        if (check == null) {
+            categoryRepository.save(category);
+        } else {
+            throw new ServiceException("Category with such name already exists.");
+        }
     }
 }
