@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by nadez on 12/4/2016.
@@ -33,17 +34,17 @@ public class BookRestController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/books/category")
-    public ResponseEntity<List<Book>> findByCategoryPOST(@RequestParam(value = "category") Integer categoryId) {
+    public ResponseEntity<Set<Book>> findByCategoryPOST(@RequestParam(value = "category") Integer categoryId) {
         return new ResponseEntity<>(bookService.findByCategory(categoryId), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/books/category")
-    public ResponseEntity<List<Book>> findByCategory(@RequestParam(value = "category") Integer categoryId) {
+    public ResponseEntity<Set<Book>> findByCategory(@RequestParam(value = "category") Integer categoryId) {
         return new ResponseEntity<>(bookService.findByCategory(categoryId), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/user/books/reserved")
-    public ResponseEntity<RegisterRecord> reserveBook(@RequestParam(value = "book") String bookId,
+    public ResponseEntity<RegisterRecord> reserveBook(@RequestParam(value = "book") Integer bookId,
                                                       @RequestParam(value = "userId") String login,
                                                       @RequestParam(value = "token", defaultValue = "") String token) {
         User user = new User();

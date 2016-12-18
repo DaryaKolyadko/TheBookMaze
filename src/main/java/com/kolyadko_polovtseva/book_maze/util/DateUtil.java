@@ -5,6 +5,7 @@ import com.kolyadko_polovtseva.book_maze.exception.DateUtilException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -24,5 +25,12 @@ public class DateUtil {
         } catch (ParseException e) {
             throw new DateUtilException(e);
         }
+    }
+
+    public static Date addDays(Date date, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, days);
+        return calendar.getTime();
     }
 }
