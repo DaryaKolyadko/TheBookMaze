@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,6 +29,17 @@
 <div class="container-fluid text-center main-wrapper" style="padding-top: 20px">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-lg-10 col-lg-offset-1 text-left about-div">
+            <%--<c:if test="${not empty actionError}">--%>
+            <%--todo--%>
+            <%--<spring:bind path="libraryBookId">--%>
+                <%--<c:if test="${status.error}">--%>
+                    <%--<div class="alert alert-danger">--%>
+                        <%--<a class="close" data-dismiss="alert" href="#">×</a>--%>
+                        <%--<form:errors path="libraryBookId"/>--%>
+                    <%--</div>--%>
+                <%--</c:if>--%>
+            <%--</spring:bind>--%>
+            <%--</c:if>--%>
             <div class="about-header">Welcome in The Book Maze!</div>
             <div class="green-text-normal-size">This is a place where you can forget about the waste of time!
                 Today you haven't go to the library to find out if the book that
@@ -35,9 +48,12 @@
                 can be online! And if you prefer e-books there is a perfect opportunity for you!
                 Our site also allow you to download some books. Have fun and relax!
             </div>
-            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-1.jpg" class="img-thumbnail rotate-1" width="33%">
-            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-2.jpg" class="img-thumbnail" width="30%">
-            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-3.jpg" class="img-thumbnail rotate-2" width="33%">
+            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-1.jpg"
+                 class="img-thumbnail rotate-1" width="33%">
+            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-2.jpg" class="img-thumbnail"
+                 width="30%">
+            <img src="${pageContext.servletContext.contextPath}/resources/img/about/maze-3.jpg"
+                 class="img-thumbnail rotate-2" width="33%">
             <a class="col-lg-offset-5 btn btn-info" href="<c:url value="/Catalogue"/> ">Go to catalogue >></a>
         </div>
     </div>

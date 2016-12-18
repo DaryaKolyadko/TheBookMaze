@@ -34,8 +34,20 @@
      margin-top: 40px;
  }
 
+.left-lg-margin {
+    margin-left: 30px;
+}
+
 .bottom-super-lg-margin {
     margin-bottom: 100px;
+}
+
+.file-preview {
+    background-color: white;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 100% !important;
 }
 
 h2 {
