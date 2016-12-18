@@ -69,8 +69,9 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                    <sec:authorize access="hasRole('USER')">
                                     <a class="btn-lg btn-info btn-reserved" href="<c:url value="/${profile.login}/Reserved"/>">My reserved books</a>
-                                </div>
+                                </sec:authorize></div>
                             </div>
                         </div>
                     </div>

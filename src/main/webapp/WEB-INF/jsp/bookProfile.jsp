@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="cl" uri="http://cloudinary.com/jsp/taglib" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fom" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,19 +22,37 @@
 <%@include file="include/menu.jsp" %>
 <div class="container-fluid text-center main-wrapper">
     <div class="row">
+        <%--<div class="alert alert-danger">--%>
+            <%--<a class="close" data-dismiss="alert" href="#">×</a>--%>
+            <%--<form:errors path="id"/>--%>
+        <%--</div>--%>
         <div class="col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 text-left">
             <div class="col-lg-4">
-                <img src='<cl:url src="${book.imageUrl}" width="306" height="470" secure="true"/>'
-                     class="img-responsive bottom-sm-margin"/>
+                <c:choose>
+                    <c:when test="${not empty book.imageUrl}">
+                        <img src='<cl:url src="${book.imageUrl}" width="306" height="470" secure="true"/>'
+                             class="img-responsive bottom-sm-margin"/>
+                    </c:when>
+                    <c:otherwise>
+                        <img src='${pageContext.servletContext.contextPath}/resources/img/book/defbookcover-min.jpg'
+                             width="306" height="470" class="img-responsive bottom-sm-margin"/>
+                    </c:otherwise>
+                </c:choose>
                 <div class="button-row-parent">
                     <c:if test="${not empty book.ebookUrl}">
                         <a class="btn btn-success" href="<cl:url src='${book.ebookUrl}'
                     secure='true' resourceType='raw'/>" download>Download</a>
                     </c:if>
-                    <sec:authorize access="isAuthenticated()">
-                    <%--<c:if test="${not empty availablelibraryCopies}">--%>
-                        <a class="btn btn-warning right-button" href="<c:url value='Reserve'/>">Reserve</a>
-                    <%--</c:if>--%>
+                    <sec:authorize access="hasRole('USER')">
+                        <%--TODO--%>
+                        <%--<c:if test="${not empty availablelibraryCopies}">--%>
+                        <form:form method="post" class="right-button"
+                                   action="/Catalogue/Category/${book.category.idCategory}/Book/${book.idBook}/Reserve"
+                                   modelAttribute="libraryBook">
+                            <form:hidden path="libraryBookId"/>
+                        <button class="btn btn-warning" type="submit">Reserve</button>
+                        <%--</c:if>--%>
+                        </form:form>
                     </sec:authorize>
                 </div>
             </div>

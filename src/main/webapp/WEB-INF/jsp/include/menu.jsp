@@ -15,9 +15,27 @@
         <c:url value="/j_spring_security_logout" var="logOutUrl"/>
         <div class="collapse navbar-collapse" id="mainMenu">
             <ul class="nav navbar-nav">
+
                 <li id="menu_catalogue">
                     <a href='<c:url value="/Catalogue"/>'> Catalogue <span class="fa fa-book fa-fw"></span></a>
                 </li>
+
+
+                <li id="menu_actions" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false">Archive<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-item"><a href="<c:url value='/Authors'/>">
+                            Authors </a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-item"><a href="<c:url value='/PublishHouses'/>">
+                            Publish Houses </a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-item"><a href="<c:url value='/Users'/>">
+                            Users </a></li>
+                    </ul>
+                </li>
+
                 <li id="menu_about">
                     <a href='<c:url value="/About"/>'> About</a>
                 </li>
@@ -36,7 +54,7 @@
                     </li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <sec:authentication var="user" property="principal" />
+                    <sec:authentication var="user" property="principal"/>
                     <li id="menu_profile" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-expanded="false">Hello, ${user.username}<span class="caret"></span></a>

@@ -25,48 +25,66 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-lg-10 col-lg-offset-1 text-left about-div">
             <h2>Book Catalogue</h2>
+            <%--<sec:authorize access="hasRole('USER')">--%>
+            <div class="top-padding bottom-padding left-lg-margin">
+                <div class="button-row-parent">
+                    <a class="btn btn-success" href="<c:url value='/Catalogue/AddCategory'/>">Add category</a>
+                    <a class="btn btn-warning" href="<c:url value='/Catalogue/AddBook'/>">Add book</a>
+                </div>
+            </div>
+            <%--</sec:authorize>--%>
             <div class="container top-sm-margin">
                 <c:forEach items="${categories}" var="category">
                     <div class="col-md-3 col-lg-3">
                         <figure>
                             <a href="<c:url value='/Catalogue/Category/${category.idCategory}'/>" class="thumbnail">
-                                <img src='<cl:url src="${category.imageUrl}" width="190" height="240" secure="true"/>'
-                                     class="img-responsive"/>
+                                <c:choose>
+                                    <c:when test="${not empty category.imageUrl}">
+                                        <img src='<cl:url src="${category.imageUrl}" width="190" height="240" secure="true"/>'
+                                             class="img-responsive"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src='${pageContext.servletContext.contextPath}/resources/img/book/defbookcover-min.jpg'
+                                             width="190" height="240" class="img-responsive"/>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </a>
                             <figcaption>
-                                <a href="<c:url value='/Catalogue/Category/${category.idCategory}'/>"><span class="category-label">${category.name}</span></a>
+                                <a href="<c:url value='/Catalogue/Category/${category.idCategory}'/>"><span
+                                        class="category-label">${category.name}</span></a>
                             </figcaption>
                         </figure>
                     </div>
                 </c:forEach>
 
                 <%--<div class="col-md-3 col-lg-3">--%>
-                    <%--<figure>--%>
-                        <%--<a href="<c:url value='/Catalogue/Category/Classics'/>" class="thumbnail">--%>
-                            <%--<img src='<cl:url src="81afb861-684c-45fc-a180-130f9245b631_yix0mx.jpg" width="190" height="240" secure="true"/>'--%>
-                                 <%--class="img-responsive"/>--%>
-                        <%--</a>--%>
-                        <%--<figcaption>--%>
-                            <%--<a href="<c:url value='/Catalogue/Category/Classics'/>"><span class="category-label">Classics</span></a>--%>
-                        <%--</figcaption>--%>
-                    <%--</figure>--%>
+                <%--<figure>--%>
+                <%--<a href="<c:url value='/Catalogue/Category/Classics'/>" class="thumbnail">--%>
+                <%--<img src='<cl:url src="81afb861-684c-45fc-a180-130f9245b631_yix0mx.jpg" width="190" height="240" secure="true"/>'--%>
+                <%--class="img-responsive"/>--%>
+                <%--</a>--%>
+                <%--<figcaption>--%>
+                <%--<a href="<c:url value='/Catalogue/Category/Classics'/>"><span class="category-label">Classics</span></a>--%>
+                <%--</figcaption>--%>
+                <%--</figure>--%>
                 <%--</div>--%>
                 <%--<div class="col-md-3 col-lg-3">--%>
-                    <%--<figure>--%>
-                        <%--<a href="<c:url value='/Catalogue/Category/Young_adult'/>" class="thumbnail">--%>
-                            <%--&lt;%&ndash;<img src='<cl:url src="11870085_vjs8sa.jpg" width="190" height="240" secure="true"/>'&ndash;%&gt;--%>
-                                 <%--&lt;%&ndash;class="img-responsive"/>&ndash;%&gt;--%>
-                            <%--<img src='<cl:url src="11870085_vjs8sa.jpg" width="190" height="240" secure="true"/>'--%>
-                                 <%--class="img-responsive"/>--%>
-                        <%--</a>--%>
-                        <%--<figcaption>--%>
-                            <%--<a href="<c:url value='/Catalogue/Category/Young_adult'/>"><span class="category-label">Young adult</span></a>--%>
-                        <%--</figcaption>--%>
-                    <%--</figure>--%>
-                </div>
+                <%--<figure>--%>
+                <%--<a href="<c:url value='/Catalogue/Category/Young_adult'/>" class="thumbnail">--%>
+                <%--&lt;%&ndash;<img src='<cl:url src="11870085_vjs8sa.jpg" width="190" height="240" secure="true"/>'&ndash;%&gt;--%>
+                <%--&lt;%&ndash;class="img-responsive"/>&ndash;%&gt;--%>
+                <%--<img src='<cl:url src="11870085_vjs8sa.jpg" width="190" height="240" secure="true"/>'--%>
+                <%--class="img-responsive"/>--%>
+                <%--</a>--%>
+                <%--<figcaption>--%>
+                <%--<a href="<c:url value='/Catalogue/Category/Young_adult'/>"><span class="category-label">Young adult</span></a>--%>
+                <%--</figcaption>--%>
+                <%--</figure>--%>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

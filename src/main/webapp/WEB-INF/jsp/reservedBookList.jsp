@@ -27,18 +27,8 @@
                     <div class="col-md-2 col-lg-2">
                         <figure>
                             <a href="<c:url value='/Catalogue/Category/${category.idCategory}/Book/${book.idBook}'/>" class="thumbnail">
-                                <%--<img src='<cl:url src="${book.imageUrl}" width="140" height="180" secure="true"/>'--%>
-                                     <%--class="img-responsive"/>--%>
-                                    <c:choose>
-                                        <c:when test="${not empty book.imageUrl}">
-                                            <img src='<cl:url src="${book.imageUrl}" width="190" height="240" secure="true"/>'
-                                                 class="img-responsive"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <img src='${pageContext.servletContext.contextPath}/resources/img/book/defbookcover-min.jpg'
-                                                 width="190" height="240" class="img-responsive"/>
-                                        </c:otherwise>
-                                    </c:choose>
+                                <img src='<cl:url src="${book.imageUrl}" width="140" height="180" secure="true"/>'
+                                     class="img-responsive"/>
                             </a>
                             <figcaption>
                                 <a href="<c:url value='/Catalogue/Category/${category.idCategory}/Book/${book.idBook}'/>"><span class="book-label">${book.name}</span></a>
