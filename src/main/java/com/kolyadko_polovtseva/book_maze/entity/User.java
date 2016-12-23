@@ -41,6 +41,9 @@ public class User implements Serializable {
     @Column(name = "birth_date")
     private Date birthDate;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<RegisterRecord> registerRecords;
@@ -114,6 +117,14 @@ public class User implements Serializable {
         this.birthDate = birthDate;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Set<RegisterRecord> getRegisterRecords() {
         return registerRecords;
     }
@@ -136,6 +147,7 @@ public class User implements Serializable {
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         if (birthDate != null ? !birthDate.equals(user.birthDate) : user.birthDate != null) return false;
+        if (imageUrl != null ? !imageUrl.equals(user.imageUrl) : user.imageUrl != null) return false;
         return registerRecords != null ? registerRecords.equals(user.registerRecords) : user.registerRecords == null;
 
     }
@@ -149,6 +161,7 @@ public class User implements Serializable {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
         result = 31 * result + (registerRecords != null ? registerRecords.hashCode() : 0);
         return result;
     }

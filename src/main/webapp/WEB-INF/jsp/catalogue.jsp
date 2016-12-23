@@ -28,8 +28,10 @@
             <%--<sec:authorize access="hasRole('USER')">--%>
             <div class="top-padding bottom-padding left-lg-margin">
                 <div class="button-row-parent">
-                    <a class="btn btn-success" href="<c:url value='/Catalogue/AddCategory'/>">Add category</a>
-                    <a class="btn btn-warning" href="<c:url value='/Catalogue/AddBook'/>">Add book</a>
+                    <a class="btn btn-success" href="<c:url value='/Catalogue/AddCategory'/>">
+                        <span class="glyphicon glyphicon-plus"></span> Add category</a>
+                    <a class="btn btn-warning" href="<c:url value='/Catalogue/AddBook'/>">
+                        <span class="glyphicon glyphicon-plus"></span> Add book</a>
                 </div>
             </div>
             <%--</sec:authorize>--%>

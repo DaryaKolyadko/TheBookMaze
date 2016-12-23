@@ -26,6 +26,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public void deleteById(Integer id) {
+        authorRepository.delete(id);
+    }
+
+    @Override
     public List<Author> findAll() {
         return authorRepository.findAll();
     }

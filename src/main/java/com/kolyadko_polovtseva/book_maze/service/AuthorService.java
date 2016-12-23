@@ -12,6 +12,8 @@ import java.util.Set;
 public interface AuthorService {
     Author findById(Integer id);
 
+    void deleteById(Integer id);
+
     List<Author> findAll();
 
     List<Author> findByIdList(List<Integer> idList);
