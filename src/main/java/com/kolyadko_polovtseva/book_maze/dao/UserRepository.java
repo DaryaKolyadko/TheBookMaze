@@ -11,6 +11,7 @@ import java.util.List;
  * Created by DaryaKolyadko on 09.12.2016.
  */
 @Component("userRepository")
+@Repository
 public interface UserRepository extends CrudRepository<User, String> {
     User findUserByLoginAndPassword(String login, String password);
 
