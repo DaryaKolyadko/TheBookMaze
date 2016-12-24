@@ -21,11 +21,12 @@
 <body>
 <%@include file="include/menu.jsp" %>
 <div class="container-fluid text-center main-wrapper">
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
     <div class="row">
-        <%--<div class="alert alert-danger">--%>
-            <%--<a class="close" data-dismiss="alert" href="#">×</a>--%>
-            <%--<form:errors path="id"/>--%>
-        <%--</div>--%>
         <div class="col-sm-12 col-md-12 col-lg-9 col-lg-offset-1 text-left">
             <div class="col-lg-4">
                 <c:choose>
@@ -44,15 +45,25 @@
                     secure='true' resourceType='raw'/>" download>Download</a>
                     </c:if>
                     <sec:authorize access="hasRole('USER')">
-                        <%--TODO--%>
-                        <%--<c:if test="${not empty availablelibraryCopies}">--%>
                         <form:form method="post" class="right-button"
                                    action="/Catalogue/Category/${book.category.idCategory}/Book/${book.idBook}/Reserve"
                                    modelAttribute="libraryBook">
                             <form:hidden path="libraryBookId"/>
-                        <button class="btn btn-warning" type="submit">Reserve</button>
-                        <%--</c:if>--%>
+                            <button class="btn btn-warning" id="reserveButton" data-toggle="tooltip"
+                                    data-placement="right" type="submit">Reserve
+                            </button>
+                            <c:if test="${not available}">
+                                <script type="text/javascript">
+                                    $('#reserveButton').attr("disabled", 'true');
+                                    $('#reserveButton').attr('title', "No available copies to reserve");</script>
+                            </c:if>
+                            <%--</c:if>--%>
                         </form:form>
+                        <c:if test="${empty profile.libraryId}">
+                            <script type="text/javascript">
+                                $('#reserveButton').attr("disabled", 'true');
+                                $('#reserveButton').attr('title', "Add library ID to your profile to reserve books");</script>
+                        </c:if>
                     </sec:authorize>
                 </div>
             </div>

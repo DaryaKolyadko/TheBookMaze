@@ -21,10 +21,14 @@
     <script src="${pageContext.servletContext.contextPath}/resources/js/lib/plugins/sortable.min.js"
             type="text/javascript"></script>
     <script src="${pageContext.servletContext.contextPath}/resources/js/lib/fileinput.min.js"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.ui.widget.js"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.iframe-transport.js"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.fileupload.js"></script>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.cloudinary.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.ui.widget.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.iframe-transport.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.fileupload.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.cloudinary.js"></script>
 
     <%--<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.ui.widget.js"></script>--%>
     <%--<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/lib/jquery.iframe-transport.js"></script>--%>

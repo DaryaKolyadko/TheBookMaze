@@ -37,8 +37,9 @@ public class ReserveBookValidator implements Validator {
 
             if (libraryBook == null) {
                 errors.rejectValue("libraryBookId", "NoSuchLibBook");
-            } else if (registerRecordService.isLibraryBookReserved(libraryBook)) ;
-            errors.rejectValue("libraryBookId", "AlreadyReserved");
+            } else if (!registerRecordService.isLibraryBookAvailable(libraryBook)) {
+                errors.rejectValue("libraryBookId", "AlreadyReserved");
+            }
         }
     }
 }

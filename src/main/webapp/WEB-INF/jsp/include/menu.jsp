@@ -7,7 +7,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <%--<c:url value="/maze" var="url_home"/>--%>
             <a href="#" class="navbar-brand">
                 <img src="${pageContext.request.contextPath}/resources/img/logo.png">
             </a>
@@ -15,26 +14,26 @@
         <c:url value="/j_spring_security_logout" var="logOutUrl"/>
         <div class="collapse navbar-collapse" id="mainMenu">
             <ul class="nav navbar-nav">
-
                 <li id="menu_catalogue">
                     <a href='<c:url value="/Catalogue"/>'> Catalogue <span class="fa fa-book fa-fw"></span></a>
                 </li>
 
-
-                <li id="menu_actions" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-expanded="false">Archive<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-item"><a href="<c:url value='/Authors'/>">
-                            Authors </a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-item"><a href="<c:url value='/PublishHouses'/>">
-                            Publish Houses </a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-item"><a href="<c:url value='/Users'/>">
-                            Users </a></li>
-                    </ul>
-                </li>
+                <sec:authorize access="hasRole('ADMIN')">
+                    <li id="menu_actions" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">Archive<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-item"><a href="<c:url value='/Authors'/>">
+                                Authors </a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-item"><a href="<c:url value='/PublishHouses'/>">
+                                Publish Houses </a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-item"><a href="<c:url value='/Users'/>">
+                                Users </a></li>
+                        </ul>
+                    </li>
+                </sec:authorize>
 
                 <li id="menu_about">
                     <a href='<c:url value="/About"/>'> About</a>

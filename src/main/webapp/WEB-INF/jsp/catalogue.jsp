@@ -25,16 +25,16 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-lg-10 col-lg-offset-1 text-left about-div">
             <h2>Book Catalogue</h2>
-            <%--<sec:authorize access="hasRole('USER')">--%>
-            <div class="top-padding bottom-padding left-lg-margin">
-                <div class="button-row-parent">
-                    <a class="btn btn-success" href="<c:url value='/Catalogue/AddCategory'/>">
-                        <span class="glyphicon glyphicon-plus"></span> Add category</a>
-                    <a class="btn btn-warning" href="<c:url value='/Catalogue/AddBook'/>">
-                        <span class="glyphicon glyphicon-plus"></span> Add book</a>
+            <sec:authorize access="hasRole('ADMIN')">
+                <div class="top-padding bottom-padding left-lg-margin">
+                    <div class="button-row-parent">
+                        <a class="btn btn-success" href="<c:url value='/Catalogue/AddCategory'/>">
+                            <span class="glyphicon glyphicon-plus"></span> Add category</a>
+                        <a class="btn btn-warning" href="<c:url value='/Catalogue/AddBook'/>">
+                            <span class="glyphicon glyphicon-plus"></span> Add book</a>
+                    </div>
                 </div>
-            </div>
-            <%--</sec:authorize>--%>
+            </sec:authorize>
             <div class="container top-sm-margin">
                 <c:forEach items="${categories}" var="category">
                     <div class="col-md-3 col-lg-3">

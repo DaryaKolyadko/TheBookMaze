@@ -52,5 +52,9 @@ public class UserValidator implements Validator {
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthDate", "NotEmpty");
+
+        if (user.getLibraryId().length() > 10) {
+            errors.rejectValue("libraryId", "Size.userForm.libraryId");
+        }
     }
 }

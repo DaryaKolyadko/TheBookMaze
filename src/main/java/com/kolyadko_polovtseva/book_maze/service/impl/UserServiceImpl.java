@@ -12,6 +12,8 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by DaryaKolyadko on 09.12.2016.
  */
@@ -44,5 +46,15 @@ public class UserServiceImpl implements UserService {
         user.setUserRole(userRole);
         user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));
         userRepository.save(user);
+    }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }
