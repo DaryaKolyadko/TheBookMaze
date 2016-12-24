@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,34 +33,34 @@
                          class="search-img">
                 </div>
                 <div class="col-lg-4">
-                    <form action="<c:url value='/Search'/>" method="POST">
+                    <form:form modelAttribute="searchForm" action="/SearchAction" method="POST">
                         <div class="form-group">
-                            <label for="byName">By name</label>
-                            <input type="text" name="byName" id="byName" class="form-control" required>
+                            <form:label path="name">By name</form:label>
+                            <form:input path="name" type="text" class="form-control" autofocus="true"/>
                         </div>
                         <div class="form-group">
-                            <label for="byAuthor">By author</label>
-                            <input type="text" name="byAuthor" id="byAuthor" class="form-control" required>
+                            <form:label path="author">By author</form:label>
+                            <form:input type="text" path="author" class="form-control"/>
                         </div>
-                        <div class="form-group">
-                            <label for="category">By category</label>
-                            <select class="selectpicker form-control" name="categoryId" id="category"
-                                    data-live-search="true">
-                                <%--data-new-value="${uncompleted.sectionId}">--%>
-                                <%--<c:forEach var="section" items="${sections}">--%>
-                                <%--<option value="${section.id}">${section.name}</option>--%>
+                        <%--<div class="form-group">--%>
+                            <%--<form:label path="category">By category:</form:label>--%>
+                            <%--<form:select path="category" class="selectpicker" name="category"--%>
+                                         <%--data-live-search="true">--%>
+                                <%--<form:option value="">None</form:option>--%>
+                                <%--<c:forEach var="category" items="${categories}">--%>
+                                    <%--<form:option value="${category.name}">${category.name}</form:option>--%>
                                 <%--</c:forEach>--%>
-                                <option value="1">Classics</option>
-                                <option value="2">Young adult</option>
-                            </select>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox">e-books only</label>
+                            <%--</form:select>--%>
+                        <%--</div>--%>
+                        <form:input path="category" value="" hidden="true"/>
+                        <div class="form-group">
+                            <form:label path="description">By words in description</form:label>
+                            <form:input type="text" path="description" class="form-control"/>
                         </div>
                         <div class="col-lg-12 top-sm-margin bottom-super-lg-margin">
                             <button class="btn btn-success col-lg-offset-3 col-lg-5" type="submit">Submit</button>
                         </div>
-                    </form>
+                    </form:form>
                 </div>
             </div>
         </div>
