@@ -34,6 +34,9 @@ public class RegisterRecord implements Serializable {
     @Column(name = "return_deadline")
     private Date returnDeadline;
 
+    @Column(name = "was_returned")
+    private Boolean wasReturned;
+
     public Integer getIdRegister() {
         return idRegister;
     }
@@ -74,6 +77,14 @@ public class RegisterRecord implements Serializable {
         this.returnDeadline = returnDeadline;
     }
 
+    public Boolean getWasReturned() {
+        return wasReturned;
+    }
+
+    public void setWasReturned(Boolean wasReturned) {
+        this.wasReturned = wasReturned;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,7 +95,6 @@ public class RegisterRecord implements Serializable {
         if (idRegister != null ? !idRegister.equals(that.idRegister) : that.idRegister != null) return false;
         if (reserveDate != null ? !reserveDate.equals(that.reserveDate) : that.reserveDate != null) return false;
         return returnDeadline != null ? returnDeadline.equals(that.returnDeadline) : that.returnDeadline == null;
-
     }
 
     @Override

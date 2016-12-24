@@ -1,5 +1,6 @@
 package com.kolyadko_polovtseva.book_maze.service;
 
+import com.kolyadko_polovtseva.book_maze.dto.SearchQueryDto;
 import com.kolyadko_polovtseva.book_maze.entity.Book;
 import com.kolyadko_polovtseva.book_maze.entity.Category;
 import com.kolyadko_polovtseva.book_maze.entity.LibraryBook;
@@ -26,4 +27,10 @@ public interface BookService {
     Book findBookByCategoryIdAndBookId(Integer categoryId, Integer bookId);
 
     void save(Book book);
+
+    List<Book> findAll();
+
+    Iterable<Book> search(SearchQueryDto query);
+
+    void deleteById(Integer id);
 }

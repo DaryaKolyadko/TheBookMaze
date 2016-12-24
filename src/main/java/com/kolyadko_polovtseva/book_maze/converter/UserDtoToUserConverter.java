@@ -13,10 +13,12 @@ public class UserDtoToUserConverter {
     public User convertFromDto(UserDto userDto) {
         User user = new User();
         user.setLogin(userDto.getLogin());
+        user.setLibraryId(userDto.getLibraryId());
         user.setPassword(userDto.getPassword());
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setBirthDate(DateUtil.parse(userDto.getBirthDate()));
+        user.setImageUrl(userDto.getImageUrl());
         return user;
     }
 }

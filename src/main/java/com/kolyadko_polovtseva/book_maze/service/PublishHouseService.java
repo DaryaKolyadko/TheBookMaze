@@ -13,4 +13,6 @@ public interface PublishHouseService {
     List<PublishHouse> findAll();
 
     void save(PublishHouse publishHouse);
+
+    void deleteById(Integer id);
 }

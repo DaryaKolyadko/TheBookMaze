@@ -71,7 +71,7 @@ public class BookController extends AbstractController {
 
     @RequestMapping(value = "/Catalogue/Category/{category}/Book/{book}", method = RequestMethod.GET)
     public String getBook(Model model, @PathVariable Integer category,
-                          @PathVariable Integer book) {
+                          @PathVariable Integer book, Principal principal) {
         configureCloudinary(model);
         Book currentBook = bookService.findBookByCategoryIdAndBookId(category, book);
         model.addAttribute("book", currentBook);
@@ -80,15 +80,23 @@ public class BookController extends AbstractController {
         if (libraryBook != null) {
             model.addAttribute("libraryBook", new ReserveBookDto(libraryBook.getIdLibraryBook()));
         }
+
+        if (principal != null) {
+            model.addAttribute("profile", userService.findByLogin(principal.getName()));
+        }
+
+        boolean available = registerRecordService.isLibraryBookAvailable(libraryBook);
+        model.addAttribute("available", available);
         return "bookProfile";
     }
 
-    @RequestMapping(value = "/Reserved/Mine", method = RequestMethod.GET)
-    public String getReservedBooks(Model model, Principal principal) {
+    @RequestMapping(value = "/UserProfile/{login}/Reserved", method = RequestMethod.GET)
+    public String getReservedBooks(Model model, @PathVariable String login) {
         configureCloudinary(model);
-        User user = userService.findByLogin(principal.getName());
+        User user = userService.findByLogin(login);
         List<RegisterRecord> reserved = registerRecordService.findByUser(user);
         model.addAttribute("reservedList", reserved);
+        model.addAttribute("profile", user);
         return "reservedBookList";
     }
 
@@ -109,11 +117,11 @@ public class BookController extends AbstractController {
         registerRecord.setLibraryBook(libraryBook);
         registerRecord.setReserveDate(new Date());
         registerRecord.setReturnDeadline(DateUtil.addDays(new Date(), BookService.RESERVE_PERIOD));
+        registerRecord.setWasReturned(false);
         registerRecord = registerRecordService.save(registerRecord);
 
         if (registerRecord.getIdRegister() != null) {
-            model.addAttribute("reservationInfo", registerRecord);
-            return "reservationInfo";
+            return "redirect:/UserProfile/" + user.getLogin() + "/Reserved";
         }
 
         bindingResult.rejectValue("error", "ReservationError");
@@ -138,6 +146,10 @@ public class BookController extends AbstractController {
         bookValidator.validate(bookDto, bindingResult);
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryService.findAll());
+            model.addAttribute("publishHouses", publishHouseService.findAll());
+            model.addAttribute("authors", authorService.findAll());
+            model.addAttribute("libraryBooks", libraryBookService.findAll());
             return "addBook";
         }
 

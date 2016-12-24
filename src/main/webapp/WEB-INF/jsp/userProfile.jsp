@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="cl" uri="http://cloudinary.com/jsp/taglib" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,25 +27,30 @@
                 <div class="panel panel-warning user-panel">
                     <div class="panel-heading clearfix">
                         <span class="panel-title">User profile</span>
-                        <div class="pull-right">
-                            <%--<c:if test="${profile.id eq userContainer.object.id}">--%>
-                            <form id="form-edit-profile" method="get"
-                                  action="<c:url value="/EditProfile"/>" hidden>
-                                <input type="text" name="login" value="${profile.login}">
-                            </form>
-                            <button class="btn btn-default"
-                                    onclick="$('#form-edit-profile').submit()">
-                                <span class="glyphicon icon-edit"></span>
-                            </button>
+                        <%--<div class="pull-right">--%>
+                            <%--<c:if test="${profile.login eq user.username}">--%>
+                                <%--<a href='<c:url value="/UserProfile/Edit/${profile.login}"/>'--%>
+                                   <%--class="btn btn-default">--%>
+                                <%--<span class="glyphicon glyphicon-edit"--%>
+                                      <%--style="color: black;"></span>--%>
+                                <%--</a>--%>
                             <%--</c:if>--%>
-                        </div>
+                        <%--</div>--%>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 bottom-sm-margin">
                                 <div class="col-lg-5">
-                                    <img src='<cl:url src="katherine-mcnamara-supports-girl-up-campaign-09_id6olb.jpg"
-                                width="160" height="160" secure="true"/>' class="img-responsive img-circle img-thumbnail"/>
+                                    <c:choose>
+                                        <c:when test="${not empty profile.imageUrl}">
+                                            <img src='<cl:url src="${profile.imageUrl}" width="160" height="160" secure="true"/>'
+                                                 class="img-responsive img-circle img-thumbnail"/>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src='${pageContext.servletContext.contextPath}/resources/img/avatar/default_avatar.png'
+                                                 width="160" height="160" class="img-responsive img-circle img-thumbnail"/>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="col-lg-7 text-center">
                                     <table class="table borderless">
@@ -64,14 +69,16 @@
                                         </tr>
                                         <tr>
                                             <td class="profile-title">Birth date</td>
-                                            <td>${profile.birthDate}</td>
-                                            <%--<td><fmt:formatDate type="date" value="${profile.birthDate}" pattern="MM/dd/yyyy"/></td>--%>
+                                            <td><fmt:formatDate type="date" value="${profile.birthDate}"
+                                                                pattern="MM/dd/yyyy"/></td>
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <sec:authorize access="hasRole('USER')">
-                                    <a class="btn-lg btn-info btn-reserved" href="<c:url value="/${profile.login}/Reserved"/>">My reserved books</a>
-                                </sec:authorize></div>
+                                    <sec:authorize access="isAuthenticated()">
+                                        <a class="btn-lg btn-info btn-reserved"
+                                           href="<c:url value="/UserProfile/${profile.login}/Reserved"/>">Reserved
+                                            books</a>
+                                    </sec:authorize></div>
                             </div>
                         </div>
                     </div>

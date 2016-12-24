@@ -16,4 +16,6 @@ public interface CategoryService {
     Category findByName(String name);
 
     void save(Category category) throws ServiceException;
+
+    void deleteById(Integer id);
 }

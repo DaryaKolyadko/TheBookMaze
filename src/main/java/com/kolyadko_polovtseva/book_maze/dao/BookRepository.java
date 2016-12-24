@@ -15,4 +15,6 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     List<Book> findBooksByCategory(Category category);
 
     Book findByCategoryIdCategoryAndIdBook(Integer categoryId, Integer bookId);
+
+    List<Book> findAll();
 }

@@ -28,7 +28,6 @@ public class AuthorController extends AbstractController {
 
     @RequestMapping(value = "/Authors", method = RequestMethod.GET)
     public String showAuthors(Model model) {
-        configureCloudinary(model);
         model.addAttribute("authors", authorService.findAll());
         return "authorsList";
     }
@@ -73,7 +72,10 @@ public class AuthorController extends AbstractController {
             return "editAuthor";
         }
 
-        authorService.save(author);
+        Author previous = authorService.findById(author.getIdAuthor());
+        previous.setFirstName(author.getFirstName());
+        previous.setLastName(author.getLastName());
+        authorService.save(previous);
         return "redirect:/Authors";
     }
 }

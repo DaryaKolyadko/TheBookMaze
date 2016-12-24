@@ -18,6 +18,13 @@
     <script src="${pageContext.servletContext.contextPath}/resources/js/signUp.js"></script>
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/lib/datepicker3.min.css"/>
     <script src="${pageContext.servletContext.contextPath}/resources/js/lib/bootstrap-datepicker.min.js"></script>
+    <link href="${pageContext.servletContext.contextPath}/resources/css/lib/fileinput.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/lib/plugins/canvas-to-blob.min.js"
+            type="text/javascript"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/lib/plugins/sortable.min.js"
+            type="text/javascript"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/lib/fileinput.min.js"></script>
     <title>Sign Up</title>
 </head>
 <body>
@@ -38,6 +45,9 @@
                     <form:errors path="login" class="has-error"/>
                     <form:input path="login" class="form-control bottom-sm-margin"
                                 placeholder="Login"/>
+                    <form:errors path="libraryId" class="has-error"/>
+                    <form:input path="libraryId" class="form-control bottom-sm-margin"
+                                placeholder="Library id (optional)"/>
                     <form:errors path="password" class="has-error"/>
                     <form:password path="password"
                                    class="form-control bottom-sm-margin"
@@ -54,7 +64,11 @@
                                 <span class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
-                    <button class="btn btn-info submit-button" type="submit">Sign Up</button>
+                    <form:input path="imageUrl" type="file" class="file file-loading"
+                                data-show-upload="false" data-show-caption="true"
+                                data-allowed-file-extensions='["jpg", "png", "jpeg"]'
+                                name="imageUrl"/>
+                    <button class="btn btn-info submit-button top-sm-margin" type="submit">Sign Up</button>
                 </form:form>
             </div>
             <div class="top-lg-margin text-center">

@@ -6,11 +6,13 @@ package com.kolyadko_polovtseva.book_maze.dto;
 
 public class UserDto {
     private String login;
+    private String libraryId;
     private String password;
     private String passwordConfirm;
     private String firstName;
     private String lastName;
     private String birthDate;
+    private String imageUrl;
 
     public String getLogin() {
         return login;
@@ -18,6 +20,14 @@ public class UserDto {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getLibraryId() {
+        return libraryId;
+    }
+
+    public void setLibraryId(String libraryId) {
+        this.libraryId = libraryId;
     }
 
     public String getPassword() {
@@ -58,5 +68,13 @@ public class UserDto {
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

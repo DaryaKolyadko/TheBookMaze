@@ -44,4 +44,9 @@ public class CategoryServiceImpl implements CategoryService {
             throw new ServiceException("Category with such name already exists.");
         }
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        categoryRepository.delete(id);
+    }
 }

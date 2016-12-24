@@ -32,4 +32,9 @@ public class PublishHouseServiceImpl implements PublishHouseService {
     public void save(PublishHouse publishHouse) {
         publishHouseRepository.save(publishHouse);
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        publishHouseRepository.delete(id);
+    }
 }

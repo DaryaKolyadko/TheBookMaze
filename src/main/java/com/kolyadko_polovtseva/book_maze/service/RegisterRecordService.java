@@ -12,5 +12,5 @@ import java.util.List;
 public interface RegisterRecordService {
     RegisterRecord save(RegisterRecord registerRecord);
     List<RegisterRecord> findByUser(User user);
-    boolean isLibraryBookReserved(LibraryBook libraryBookId);
+    boolean isLibraryBookAvailable(LibraryBook libraryBookId);
 }

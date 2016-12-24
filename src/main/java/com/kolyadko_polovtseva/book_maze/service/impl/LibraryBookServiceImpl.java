@@ -20,7 +20,6 @@ public class LibraryBookServiceImpl implements LibraryBookService {
 
     @Override
     public LibraryBook findAvailableFor(Book book) {
-        // todo
         return libraryBookRepository.findLibraryBookByBook(book);
     }
 
