@@ -15,6 +15,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
  * Created by DaryaKolyadko on 26.11.2016.
@@ -34,8 +36,11 @@ public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()//.antMatchers("/**").permitAll()
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/PublishHouses/**").access("hasRole('ADMIN')")
+                .antMatchers("/Authors/**").access("hasRole('ADMIN')")
+                .antMatchers("/Catalogue/AddBook").access("hasRole('ADMIN')")
+                .antMatchers("/Catalogue/AddCategory").access("hasRole('ADMIN')")
+                .antMatchers("/Users/**").access("hasRole('ADMIN')")
                 .antMatchers("/UserProfile/**").access("isAuthenticated()")
                 .antMatchers("/LogIn").access("isAnonymous()")
                 .antMatchers("/SignUp").access("isAnonymous()")
@@ -46,6 +51,10 @@ public class SpringSecurityWebConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable();
 //                .and().exceptionHandling().accessDeniedPage("/AccessDenied");
 //                .and().exceptionHandling().authenticationEntryPoint("/LogIn");
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        http.addFilterBefore(filter,CsrfFilter.class);
     }
 
     //    @Autowired

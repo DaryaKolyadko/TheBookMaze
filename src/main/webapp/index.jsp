@@ -32,12 +32,12 @@
             <%--<c:if test="${not empty actionError}">--%>
             <%--todo--%>
             <%--<spring:bind path="libraryBookId">--%>
-                <%--<c:if test="${status.error}">--%>
-                    <%--<div class="alert alert-danger">--%>
-                        <%--<a class="close" data-dismiss="alert" href="#">×</a>--%>
-                        <%--<form:errors path="libraryBookId"/>--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+            <%--<c:if test="${status.error}">--%>
+            <%--<div class="alert alert-danger">--%>
+            <%--<a class="close" data-dismiss="alert" href="#">×</a>--%>
+            <%--<form:errors path="libraryBookId"/>--%>
+            <%--</div>--%>
+            <%--</c:if>--%>
             <%--</spring:bind>--%>
             <%--</c:if>--%>
             <div class="about-header">Welcome in The Book Maze!</div>

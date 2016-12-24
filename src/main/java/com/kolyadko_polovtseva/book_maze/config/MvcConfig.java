@@ -3,11 +3,19 @@ package com.kolyadko_polovtseva.book_maze.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by DaryaKolyadko on 03.12.2016.
@@ -38,5 +46,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setCacheSeconds(0);
         return messageSource;
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(createUtf8MessageConverter());
+        super.configureMessageConverters(converters);
+    }
+
+    private StringHttpMessageConverter createUtf8MessageConverter() {
+        StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        converter.setSupportedMediaTypes(Collections.singletonList(new MediaType("text", "html", Charset.forName("UTF-8"))));
+        return converter;
     }
 }

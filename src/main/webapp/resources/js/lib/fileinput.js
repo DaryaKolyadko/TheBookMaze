@@ -460,7 +460,7 @@
         other: {width: "160px", height: "160px"}
     };
     defaultPreviewZoomSettings = {
-        image: {width: "auto", height: "auto", 'max-width': "100%",'max-height': "100%"},
+        image: {width: "auto", height: "auto", 'max-width': "100%", 'max-height': "100%"},
         html: {width: "100%", height: "100%", 'min-height': "480px"},
         text: {width: "100%", height: "100%", 'min-height': "480px"},
         video: {width: "auto", height: "100%", 'max-width': "100%"},
@@ -1065,13 +1065,13 @@
                     self.initialPreview = moveArray(self.initialPreview, oldIndex, newIndex);
                     self.initialPreviewConfig = moveArray(self.initialPreviewConfig, oldIndex, newIndex);
                     previewCache.init(self);
-                    for(var i = 0; i < self.initialPreviewConfig.length; i++) {
-                        if(self.initialPreviewConfig[i] !== null) {
+                    for (var i = 0; i < self.initialPreviewConfig.length; i++) {
+                        if (self.initialPreviewConfig[i] !== null) {
                             var key = self.initialPreviewConfig[i].key;
                             var $frame = $(".kv-file-remove[data-key='" + key + "']");
                             $frame = $frame.closest('.file-preview-frame');
-                            $frame.attr('data-fileindex', 'init_'+i);
-                            $frame.data('fileindex', 'init_'+i);
+                            $frame.attr('data-fileindex', 'init_' + i);
+                            $frame.data('fileindex', 'init_' + i);
                         }
                     }
                     self._raise('filesorted', {
@@ -2076,7 +2076,7 @@
             if (!bytes || !size || isNaN(bytes) || isNaN(size)) {
                 return self._getLayoutTemplate('size').replace('{sizeText}', '0.00 KB');
             }
-            var  i, func = self.fileSizeGetter, sizes, out;
+            var i, func = self.fileSizeGetter, sizes, out;
             if (typeof func === 'function') {
                 out = func(bytes);
             } else {

@@ -13,7 +13,7 @@
 .datepicker table tr td.active,
 .datepicker table tr td.active:hover,
 .datepicker table tr span.active,
-.datepicker table tr span.active:hover{
+.datepicker table tr span.active:hover {
     background: rgb(0, 97, 83) !important;
     text-shadow: none;
 }

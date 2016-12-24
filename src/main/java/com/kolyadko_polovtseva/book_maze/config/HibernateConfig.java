@@ -70,9 +70,9 @@ public class HibernateConfig {
         factory.setDataSource(dataSource);
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.connection.characterEncoding", "utf8");
-        properties.setProperty("hibernate.connection.CharSet", "utf8");
-        properties.setProperty("hibernate.connection.useUnicode", "true");
+        properties.setProperty("hibernate.connection.characterEncoding", "UTF-8");
+//        properties.setProperty("hibernate.connection.CharSet", "utf8");
+        properties.setProperty("hibernate.connection.useUnicode", "yes");
 //        properties.setProperty("hibernate.cache.use_second_level_cache", "true");
 //        properties.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
 //        properties.setProperty("hibernate.cache.use_query_cache", "true");
