@@ -35,8 +35,9 @@ public class UserController extends AbstractController {
 
     @RequestMapping(value = "/UserProfile/Edit/{login}", method = RequestMethod.GET)
     public String showEditProfile(Model model, @PathVariable String login) {
+        configureCloudinary(model);
         User user = userService.findByLogin(login);
-        model.addAttribute("profile", user);
+        model.addAttribute("userForm", user);
         return "editUserProfile";
     }
 
@@ -53,7 +54,11 @@ public class UserController extends AbstractController {
         previous.setLastName(user.getLastName());
         previous.setLibraryId(user.getLibraryId());
         previous.setBirthDate(user.getBirthDate());
-        previous.setImageUrl(user.getImageUrl());
+
+        if (!user.getImageUrl().isEmpty()) {
+            previous.setImageUrl(user.getImageUrl());
+        }
+
         userService.save(previous);
         return "redirect:/UserProfile/" + user.getLogin();
     }

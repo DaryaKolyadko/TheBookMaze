@@ -1,8 +1,10 @@
 package com.kolyadko_polovtseva.book_maze.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -24,41 +26,43 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@ImportResource("classpath:/core-app-context.xml")
 @PropertySource(value = {"classpath:db.properties"})
 public class HibernateConfig {
-    private static final String DRIVER = "jdbc.driver";
-    private static final String URL = "jdbc.url";
-    private static final String USERNAME = "jdbc.username";
-    private static final String PASSWORD = "jdbc.password";
+//    private static final String DRIVER = "jdbc.driver";
+//    private static final String URL = "jdbc.url";
+//    private static final String USERNAME = "jdbc.username";
+//    private static final String PASSWORD = "jdbc.password";
+//
+//    private Environment env;
+//
+//    @Bean
+//    public DriverManagerDataSource basicDataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(env.getProperty(DRIVER));
+//        dataSource.setUrl(env.getProperty(URL));
+//        dataSource.setUsername(env.getProperty(USERNAME));
+//        dataSource.setPassword(env.getProperty(PASSWORD));
+////        boneCPDataSource.setIdleConnectionTestPeriodInMinutes(60);
+////        boneCPDataSource.setMaxIdle(420);
+////        boneCPDataSource.
+////        boneCPDataSource.setMaxConnectionsPerPartition(30);
+////        boneCPDataSource.setMinConnectionsPerPartition(10);
+////        boneCPDataSource.setPartitionCount(3);
+////        boneCPDataSource.setAcquireIncrement(5);
+////        boneCPDataSource.setStatementsCacheSize(100);
+////        boneCPDataSource.setReleaseHelperThreads(3);
+//        return dataSource;
+//    }
 
-    private Environment env;
-
+//    @Bean
+//    public HibernateExceptionTranslator hibernateExceptionTranslator() {
+//        return new HibernateExceptionTranslator();
+//    }
+//
     @Bean
-    public DriverManagerDataSource basicDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty(DRIVER));
-        dataSource.setUrl(env.getProperty(URL));
-        dataSource.setUsername(env.getProperty(USERNAME));
-        dataSource.setPassword(env.getProperty(PASSWORD));
-//        boneCPDataSource.setIdleConnectionTestPeriodInMinutes(60);
-//        boneCPDataSource.setMaxIdle(420);
-//        boneCPDataSource.
-//        boneCPDataSource.setMaxConnectionsPerPartition(30);
-//        boneCPDataSource.setMinConnectionsPerPartition(10);
-//        boneCPDataSource.setPartitionCount(3);
-//        boneCPDataSource.setAcquireIncrement(5);
-//        boneCPDataSource.setStatementsCacheSize(100);
-//        boneCPDataSource.setReleaseHelperThreads(3);
-        return dataSource;
-    }
-
-    @Bean
-    public HibernateExceptionTranslator hibernateExceptionTranslator() {
-        return new HibernateExceptionTranslator();
-    }
-
-    @Bean
-    public EntityManagerFactory entityManagerFactory(DriverManagerDataSource dataSource) {
+    @Qualifier("entityManagerFactory")
+    public EntityManagerFactory entityManagerFactory(@Qualifier("dataSource") DriverManagerDataSource dataSource) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 //        vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setShowSql(true);
@@ -83,18 +87,18 @@ public class HibernateConfig {
         //TODO move to properties
     }
 
-    @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager txManager = new JpaTransactionManager();
-        JpaDialect jpaDialect = new HibernateJpaDialect();
-        txManager.setEntityManagerFactory(entityManagerFactory);
-        txManager.setJpaDialect(jpaDialect);
-        return txManager;
-    }
+//    @Bean
+//    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+//        JpaTransactionManager txManager = new JpaTransactionManager();
+//        JpaDialect jpaDialect = new HibernateJpaDialect();
+//        txManager.setEntityManagerFactory(entityManagerFactory);
+//        txManager.setJpaDialect(jpaDialect);
+//        return txManager;
+//    }
 
-
-    @Autowired
-    public void setEnv(Environment env) {
-        this.env = env;
-    }
+//
+//    @Autowired
+//    public void setEnv(Environment env) {
+//        this.env = env;
+//    }
 }

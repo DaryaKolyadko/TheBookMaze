@@ -24,6 +24,7 @@ public class RegisterRecordServiceImpl implements RegisterRecordService {
 
     @Override
     public RegisterRecord save(RegisterRecord registerRecord) {
+        registerRecord.setWasReturned(false);
         registerRecord = registerRecordRepository.save(registerRecord);
         return registerRecord;
     }

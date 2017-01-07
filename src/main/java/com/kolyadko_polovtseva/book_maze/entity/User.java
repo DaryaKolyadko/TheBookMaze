@@ -3,6 +3,7 @@ package com.kolyadko_polovtseva.book_maze.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -38,6 +39,7 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "birth_date")
     private Date birthDate;
 

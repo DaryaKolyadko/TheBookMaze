@@ -55,7 +55,7 @@
                             <c:if test="${not available}">
                                 <script type="text/javascript">
                                     $('#reserveButton').attr("disabled", 'true');
-                                    $('#reserveButton').attr('title', "No available copies to reserve");</script>
+                                    $('#reserveButton').attr('title', "No available copies");</script>
                             </c:if>
                             <%--</c:if>--%>
                         </form:form>

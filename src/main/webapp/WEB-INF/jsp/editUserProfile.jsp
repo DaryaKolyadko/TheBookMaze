@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="cl" uri="http://cloudinary.com/jsp/taglib" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -34,7 +35,7 @@
         <div class="col-sm-12 col-md-11 col-lg-11 col-lg-offset-1 text-left">
             <h2>Edit User Profile</h2>
             <div class="container top-sm-margin col-lg-offset-4 col-lg-8 text-center">
-                <form:form class="col-lg-6" modelAttribute="userForm" action="/SignUp" method="post">
+                <form:form class="col-lg-6" modelAttribute="userForm" action="/UserProfile/Edit" method="post">
                     <form:errors path="firstName" class="has-error"/>
                     <form:input path="firstName" class="form-control bottom-sm-margin"
                                 placeholder="First name" autofocus="true"/>
@@ -56,11 +57,22 @@
                                 <span class="glyphicon glyphicon-calendar"></span>
                         </span>
                     </div>
+                    <label>Current avatar:</label>
+                    <c:choose>
+                        <c:when test="${not empty userForm.imageUrl}">
+                            <img src='<cl:url src="${userForm.imageUrl}" width="90" height="140" secure="true"/>'
+                                 class="img-responsive top-sm-margin bottom-sm-margin"/>
+                        </c:when>
+                        <c:otherwise>
+                            <img src='${pageContext.servletContext.contextPath}/resources/img/book/defbookcover-min.jpg'
+                                 width="90" height="140" class="img-responsive top-sm-margin bottom-sm-margin"/>
+                        </c:otherwise>
+                    </c:choose>
                     <form:input path="imageUrl" type="file" class="file file-loading"
                                 data-show-upload="false" data-show-caption="true"
                                 data-allowed-file-extensions='["jpg", "png", "jpeg"]'
                                 name="imageUrl"/>
-                    <button class="btn btn-info submit-button" type="submit">Finish</button>
+                    <button class="btn btn-info submit-button top-sm-margin" type="submit">Finish</button>
                 </form:form>
             </div>
         </div>

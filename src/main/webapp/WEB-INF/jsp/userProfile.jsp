@@ -27,15 +27,15 @@
                 <div class="panel panel-warning user-panel">
                     <div class="panel-heading clearfix">
                         <span class="panel-title">User profile</span>
-                        <%--<div class="pull-right">--%>
-                            <%--<c:if test="${profile.login eq user.username}">--%>
-                                <%--<a href='<c:url value="/UserProfile/Edit/${profile.login}"/>'--%>
-                                   <%--class="btn btn-default">--%>
-                                <%--<span class="glyphicon glyphicon-edit"--%>
-                                      <%--style="color: black;"></span>--%>
-                                <%--</a>--%>
-                            <%--</c:if>--%>
-                        <%--</div>--%>
+                        <div class="pull-right">
+                            <c:if test="${profile.login eq user.username}">
+                                <a href='<c:url value="/UserProfile/Edit/${profile.login}"/>'
+                                   class="btn btn-default">
+                                <span class="glyphicon glyphicon-edit"
+                                      style="color: black;"></span>
+                                </a>
+                            </c:if>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -48,7 +48,8 @@
                                         </c:when>
                                         <c:otherwise>
                                             <img src='${pageContext.servletContext.contextPath}/resources/img/avatar/default_avatar.png'
-                                                 width="160" height="160" class="img-responsive img-circle img-thumbnail"/>
+                                                 width="160" height="160"
+                                                 class="img-responsive img-circle img-thumbnail"/>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
@@ -75,9 +76,11 @@
                                         </tbody>
                                     </table>
                                     <sec:authorize access="isAuthenticated()">
-                                        <a class="btn-lg btn-info btn-reserved"
-                                           href="<c:url value="/UserProfile/${profile.login}/Reserved"/>">Reserved
-                                            books</a>
+                                        <c:if test="${not empty profile.libraryId}">
+                                            <a class="btn-lg btn-info btn-reserved"
+                                               href="<c:url value="/UserProfile/${profile.login}/Reserved"/>">Reserved
+                                                books</a>
+                                        </c:if>
                                     </sec:authorize></div>
                             </div>
                         </div>
